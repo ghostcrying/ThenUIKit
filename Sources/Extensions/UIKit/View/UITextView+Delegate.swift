@@ -2,7 +2,7 @@
 //  UITextView+Delegate.swift
 //  ThenUIKit
 //
-//  Created by 陈卓 on 2023/3/22.
+//  Created by ghost on 2023/3/22.
 //
 
 import UIKit

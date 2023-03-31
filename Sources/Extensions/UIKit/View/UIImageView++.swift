@@ -2,7 +2,7 @@
 //  UIImageView++.swift
 //  ThenUIKit
 //
-//  Created by 陈卓 on 2023/3/20.
+//  Created by ghost on 2023/3/20.
 //
 
 import UIKit

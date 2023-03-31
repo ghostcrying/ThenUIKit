@@ -2,7 +2,7 @@
 //  ThenInputSecrectImageView.swift
 //  Test_02
 //
-//  Created by 陈卓 on 2023/2/24.
+//  Created by ghost on 2023/2/24.
 //
 
 import UIKit

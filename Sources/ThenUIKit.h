@@ -2,7 +2,7 @@
 //  ThenUIKit.h
 //  ThenUIKit
 //
-//  Created by 陈卓 on 2023/3/22.
+//  Created by ghost on 2023/3/22.
 //
 
 #import <Foundation/Foundation.h>

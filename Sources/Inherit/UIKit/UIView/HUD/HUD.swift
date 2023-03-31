@@ -2,7 +2,7 @@
 //  HUD.swift
 //  ThenUIKit
 //
-//  Created by 陈卓 on 2023/3/6.
+//  Created by ghost on 2023/3/6.
 //
 
 import UIKit
