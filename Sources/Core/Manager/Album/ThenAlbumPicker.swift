@@ -9,8 +9,9 @@ import UIKit
 
 public extension ThenAlbumPicker {
     
+    /// 图片编辑类型
     enum ClipStyle {
-        /// 不裁剪
+        /// 原始图片
         case none
         /// 正方形裁剪
         case square
@@ -55,7 +56,7 @@ public class ThenAlbumPicker: NSObject {
                  controller.present(picker, animated: true, completion: nil)
              }
              */
-            let picker = UIImagePickerController()
+            let picker = PickerController()
             picker.sourceType = .photoLibrary
             picker.modalPresentationStyle = .overFullScreen
             picker.allowsEditing = false // 不编辑
@@ -76,7 +77,7 @@ public class ThenAlbumPicker: NSObject {
             }
             self.closure = closure
             self.style = style
-            let pickerVC = UIImagePickerController()
+            let pickerVC = PickerController()
             pickerVC.sourceType = .camera
             pickerVC.cameraDevice = availableDevice
             pickerVC.allowsEditing = false // 不编辑
@@ -99,24 +100,56 @@ extension ThenAlbumPicker: UINavigationControllerDelegate, UIImagePickerControll
             picker.dismiss(animated: true) { self.closure?(originImage) }
             return
         }
-        // 在这里进入自定义裁剪页面
-        let editView = ThenAlbumEditView(frame: UIScreen.main.bounds, style: self.style)
-        editView.configUI(originImage)
-        editView.clickClosure = { [weak self] value in
+        guard let controller = picker as? PickerController else {
+            picker.dismiss(animated: true) { self.closure?(nil) }
+            return
+        }
+        // deal custom clip
+        controller.startEditer(image: originImage, clipState: self.style) { [weak self] value in
             switch value {
             case .cancel:
-                picker.dismiss(animated: true)
+                controller.dismiss(animated: true)
             case .sure(let image):
-                picker.dismiss(animated: true) {
+                controller.dismiss(animated: true) {
                     self?.closure?(image)
                 }
             }
         }
-        picker.view.addSubview(editView)
     }
     
     public func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true, completion: nil)
+    }
+
+}
+
+extension ThenAlbumPicker {
+    
+    internal class PickerController: UIImagePickerController {
+
+        lazy var editView: ThenAlbumEditView = {
+            let view = ThenAlbumEditView(frame: .zero)
+            view.isHidden = true
+            view.translatesAutoresizingMaskIntoConstraints = false
+            return view
+        }()
+        
+        override func viewDidLoad() {
+            super.viewDidLoad()
+
+            self.view.addSubview(self.editView)
+            NSLayoutConstraint.activate([
+                self.editView.leftAnchor.constraint(equalTo: view.leftAnchor),
+                self.editView.rightAnchor.constraint(equalTo: view.rightAnchor),
+                self.editView.topAnchor.constraint(equalTo: view.topAnchor),
+                self.editView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            ])
+        }
+                
+        func startEditer(image: UIImage, clipState: ThenAlbumPicker.ClipStyle, closure: @escaping (ThenAlbumEditView.PickerType) -> ()) {
+            editView.configUI(image: image, clipState: clipState, clickClosure: closure)
+            editView.isHidden = false
+        }
     }
 
 }

@@ -19,10 +19,10 @@ public extension ThenExtension where T: UITextField {
 
 extension UITextField {
     
-    // maxlength: 限制输入长度
-    // 返回元祖:
-    // - Bool: 是否可以返回
-    // - String: 显示的文本
+    /// maxlength: 限制输入长度
+    /// 返回:
+    /// - Bool: 是否可以返回
+    /// - String: 可显示的文本
     func shouldChange(maxlength: Int, range: NSRange, replace: String) -> (Bool, String) {
         // 原始文本
         let t = text ?? ""

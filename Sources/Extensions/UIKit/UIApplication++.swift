@@ -10,6 +10,7 @@ import ThenFoundation
 
 public extension UIApplication {
     
+    /// 适配iOS13的Window处理
     var window: UIWindow? {
         if #available(iOS 13.0, *) {
             return UIApplication.shared
@@ -31,6 +32,7 @@ public extension ThenExtension where T: UIApplication {
         return findTop(base.window?.rootViewController)
     }
     
+    /// exit application
     func exit() {
         UIControl().sendAction(#selector(URLSessionTask.suspend), to: UIApplication.shared, for: nil)
         DispatchQueue.main.then.delay(1) { Darwin.exit(EXIT_SUCCESS) }

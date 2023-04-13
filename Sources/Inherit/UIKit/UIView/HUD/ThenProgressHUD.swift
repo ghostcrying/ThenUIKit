@@ -66,11 +66,12 @@ public class ThenProgressHUD: UIView {
         let activity: UIActivityIndicatorView
         if #available(iOS 13.0, *) {
             activity = UIActivityIndicatorView(style: .medium)
+            activity.color = UIColor.white
         } else {
             activity = UIActivityIndicatorView(style: .white)
+            activity.tintColor = UIColor.white
         }
         activity.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
-        activity.tintColor = UIColor.white
         activity.hidesWhenStopped = true
         return activity
     }()
