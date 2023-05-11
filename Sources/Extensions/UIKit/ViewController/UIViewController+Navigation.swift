@@ -88,3 +88,24 @@ extension UIViewController {
         navigationController?.viewControllers = vcs.suffix(from: lastIndex).compactMap { $0 }
     }
 }
+
+public extension UIViewController {
+    /// 导航栏背景颜色
+    var navigationbBarBackgroundColor: UIColor? {
+        get { return navigationController?.navigationBar.barTintColor }
+        set {
+            guard let controller = (self as? UINavigationController) ?? navigationController else { return }
+            if #available(iOS 13.0, *) {
+                let appearance = controller.navigationBar.standardAppearance
+                appearance.backgroundColor = newValue
+                appearance.shadowColor = .clear
+                controller.navigationBar.standardAppearance = appearance
+                if #available(iOS 15.0, *) {
+                    controller.navigationBar.scrollEdgeAppearance = appearance
+                }
+            } else {
+                controller.navigationBar.barTintColor = newValue
+            }
+        }
+    }
+}
