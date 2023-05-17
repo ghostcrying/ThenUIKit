@@ -78,6 +78,7 @@
 		9E525CBE29CAB1AD001AC37E /* CALayer+Sequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E525CBB29CAB1AD001AC37E /* CALayer+Sequence.swift */; };
 		9E525CC029CACDB7001AC37E /* UITextView+Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E525CBF29CACDB7001AC37E /* UITextView+Delegate.swift */; };
 		9E525CC229CAD023001AC37E /* UIView+Loading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E525CC129CAD023001AC37E /* UIView+Loading.swift */; };
+		9EA1FD3C2A14FEB00088DD2A /* ThenWaveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EA1FD3B2A14FEB00088DD2A /* ThenWaveView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -153,6 +154,7 @@
 		9E525CBB29CAB1AD001AC37E /* CALayer+Sequence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CALayer+Sequence.swift"; sourceTree = "<group>"; };
 		9E525CBF29CACDB7001AC37E /* UITextView+Delegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextView+Delegate.swift"; sourceTree = "<group>"; };
 		9E525CC129CAD023001AC37E /* UIView+Loading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Loading.swift"; sourceTree = "<group>"; };
+		9EA1FD3B2A14FEB00088DD2A /* ThenWaveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThenWaveView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -348,6 +350,7 @@
 		9E525C5029CAACB1001AC37E /* UIView */ = {
 			isa = PBXGroup;
 			children = (
+				9EA1FD3A2A14FEA40088DD2A /* Wave */,
 				9E525CC329CAD3AF001AC37E /* Others */,
 				9E525CB629CAAF02001AC37E /* Scene */,
 				9E525CB529CAAEF6001AC37E /* Scan */,
@@ -467,6 +470,14 @@
 				9E525C6229CAACB1001AC37E /* ThenSegmentControl.swift */,
 			);
 			path = Others;
+			sourceTree = "<group>";
+		};
+		9EA1FD3A2A14FEA40088DD2A /* Wave */ = {
+			isa = PBXGroup;
+			children = (
+				9EA1FD3B2A14FEB00088DD2A /* ThenWaveView.swift */,
+			);
+			path = Wave;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -600,6 +611,7 @@
 				9E525C8029CAACB1001AC37E /* UIButton+Shadow.swift in Sources */,
 				9E525CA329CAACB1001AC37E /* ThenInputLineView.swift in Sources */,
 				9E525CA529CAACB1001AC37E /* ThenActivityIndicatorView.swift in Sources */,
+				9EA1FD3C2A14FEB00088DD2A /* ThenWaveView.swift in Sources */,
 				9E525C7229CAACB1001AC37E /* ThenAlbumPicker.swift in Sources */,
 				9E525CAF29CAACB1001AC37E /* AnimationGroup.swift in Sources */,
 				9E525C9E29CAACB1001AC37E /* ThenInputSecrectImageView.swift in Sources */,
