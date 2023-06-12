@@ -760,7 +760,7 @@ extension UIViewController: ViewableType {
 public extension ThenExtension where T: ViewableType {
     
     func isSub<T: ViewableType>(of type: T.Type) -> Bool {
-        return base.view.isSub(of: type)
+        return value.view.isSub(of: type)
     }
 }
 
@@ -768,15 +768,15 @@ public extension ThenExtension where T: ViewableType {
     
     func debugBorder() {
         
-        if base.layer.borderWidth > 0 {
+        if value.layer.borderWidth > 0 {
             return
         }
         
         let rc = UIColor(hex: Int.random(in: (0...0xffffff)))
-        base.layer.borderColor = rc.cgColor
-        base.layer.borderWidth = 1
+        value.layer.borderColor = rc.cgColor
+        value.layer.borderWidth = 1
         
-        base.subviews.forEach { $0.then.debugBorder() }
+        value.subviews.forEach { $0.then.debugBorder() }
     }
 }
 

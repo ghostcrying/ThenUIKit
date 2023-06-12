@@ -11,34 +11,34 @@ import ThenFoundation
 public extension ThenExtension where T : UIViewController {
     
     var isRoot: Bool {
-        return base.navigationController?.viewControllers.first == base
+        return value.navigationController?.viewControllers.first == value
     }
 }
 
 public extension ThenExtension where T : UIViewController {
     
     func filter(without withoutType: UIViewController.Type) {
-        base.filter(without: [withoutType])
+        value.filter(without: [withoutType])
     }
     
     func filter(without withoutTypes: [UIViewController.Type]) {
-        base.filter(without: withoutTypes)
+        value.filter(without: withoutTypes)
     }
     
     func navigationPrefixToSelf(without withoutTypes: [UIViewController.Type] = []) {
-        base.navigationPrefixToSelf(without: withoutTypes)
+        value.navigationPrefixToSelf(without: withoutTypes)
     }
     
     func navigationSuffixToSelf(without withoutTypes: [UIViewController.Type] = []) {
-        base.navigationSuffixToSelf(without: withoutTypes)
+        value.navigationSuffixToSelf(without: withoutTypes)
     }
     
     func navigationPrefix(to toType: UIViewController.Type, without withoutTypes: [UIViewController.Type] = []) {
-        base.navigationPrefix(to: toType, without: withoutTypes)
+        value.navigationPrefix(to: toType, without: withoutTypes)
     }
     
     func navigationSuffix(to toType: UIViewController.Type, without withoutTypes: [UIViewController.Type] = []) {
-        base.navigationSuffix(to: toType, without: withoutTypes)
+        value.navigationSuffix(to: toType, without: withoutTypes)
     }
 }
 

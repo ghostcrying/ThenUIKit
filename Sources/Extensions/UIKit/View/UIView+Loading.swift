@@ -11,38 +11,38 @@ import ThenFoundation
 public extension ThenExtension where T: ViewableType {
     
     var loading: UIViewLoadingProxy {
-        return UIViewLoadingProxy(base: base)
+        return UIViewLoadingProxy(value)
     }
 }
 
 public class UIViewLoadingProxy {
     
-    private var base: ViewableType
-    fileprivate init(base: ViewableType) {
-        self.base = base
+    private var viewable: ViewableType
+    fileprivate init(_ viewable: ViewableType) {
+        self.viewable = viewable
     }
     
     private static var bindedKey: String = "com.then.uikit.loading.bind.key"
     
     private var activityView: UIActivityIndicatorView? {
-        get { return base.view.then.binded(for: &UIViewLoadingProxy.bindedKey) }
-        set { base.view.then.bind(object: newValue, for: &UIViewLoadingProxy.bindedKey, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)}
+        get { return viewable.view.then.binded(for: &UIViewLoadingProxy.bindedKey) }
+        set { viewable.view.then.bind(object: newValue, for: &UIViewLoadingProxy.bindedKey, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)}
     }
     
     public func start(style: UIActivityIndicatorView.Style = .gray, offset: CGPoint = .zero) {
         if let act = activityView {
             if act.superview == nil {
-                base.addSub(act)
-                makeCenterConstrains(base, act, offset)
+                viewable.addSub(act)
+                makeCenterConstrains(viewable, act, offset)
             }
-            base.bringSubviewToFront(act)
+            viewable.bringSubviewToFront(act)
             act.startAnimating()
             return
         }
         let nact = UIActivityIndicatorView(style: style)
         nact.hidesWhenStopped = true
-        base.addSub(nact)
-        makeCenterConstrains(base, nact, offset)
+        viewable.addSub(nact)
+        makeCenterConstrains(viewable, nact, offset)
         nact.startAnimating()
         activityView = nact
     }

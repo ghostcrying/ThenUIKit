@@ -60,32 +60,32 @@ extension ThenExtension where T == NSAttributedString {
     public func attribute(lineSpacing: CGFloat? = nil,
                           alignment: NSTextAlignment? = nil,
                           for range: NSRange? = nil) -> NSMutableAttributedString {
-        return base.attribute(lineSpacing: lineSpacing, alignment: alignment, for: range)
+        return value.attribute(lineSpacing: lineSpacing, alignment: alignment, for: range)
     }
     
     public func attribute(textColor: UIColor, for range: NSRange? = nil) -> NSMutableAttributedString {
-        return base.attribute(textColor: textColor, for: range)
+        return value.attribute(textColor: textColor, for: range)
     }
     
     public func attribute(textFont: UIFont, for range: NSRange? = nil) -> NSMutableAttributedString {
-        return base.attribute(textFont: textFont, for: range)
+        return value.attribute(textFont: textFont, for: range)
     }
 }
 
 extension ThenExtension where T == NSMutableAttributedString {
     
     public func update(textColor: UIColor, for range: NSRange? = nil) {
-        base.update(textColor: textColor, for: range)
+        value.update(textColor: textColor, for: range)
     }
     
     public func update(textFont: UIFont, for range: NSRange? = nil) {
-        base.update(textFont: textFont, for: range)
+        value.update(textFont: textFont, for: range)
     }
     
     public func update(lineSpacing: CGFloat? = nil,
                 alignment: NSTextAlignment? = nil,
                 for range: NSRange? = nil) {
-        base.update(lineSpacing: lineSpacing, alignment: alignment, for: range)
+        value.update(lineSpacing: lineSpacing, alignment: alignment, for: range)
     }
 }
 

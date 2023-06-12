@@ -17,19 +17,19 @@ public extension ThenExtension where T: UIGestureRecognizer {
     
     @discardableResult
     func on(_ closure: @escaping (UIGestureRecognizer) -> Void) -> ThenExtension {
-        base.isEnabled = true
-        var temp: [ObserverGestureTarget] = base.kit_gestureTargets ?? []
-        let target = ObserverGestureTarget(gesture: base) { closure($0) }
+        value.isEnabled = true
+        var temp: [ObserverGestureTarget] = value.kit_gestureTargets ?? []
+        let target = ObserverGestureTarget(gesture: value) { closure($0) }
         temp.append(target)
-        base.kit_gestureTargets = temp
+        value.kit_gestureTargets = temp
         return self
     }
     
     @discardableResult
     func off() -> ThenExtension {
-        base.isEnabled = false
-        base.kit_gestureTargets?.forEach({ $0.dispose() })
-        base.kit_gestureTargets?.removeAll()
+        value.isEnabled = false
+        value.kit_gestureTargets?.forEach({ $0.dispose() })
+        value.kit_gestureTargets?.removeAll()
         return self
     }
 }

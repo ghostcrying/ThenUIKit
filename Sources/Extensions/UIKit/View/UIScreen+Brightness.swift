@@ -17,9 +17,9 @@ public extension ThenExtension where T: UIScreen {
     
     func scale(with target: CGFloat) -> CGFloat {
         if UIApplication.shared.statusBarOrientation.isLandscape {
-            return base.bounds.width / target
+            return value.bounds.width / target
         } else {
-            return base.bounds.height / target
+            return value.bounds.height / target
         }
     }
 }
@@ -28,7 +28,7 @@ public extension ThenExtension where T: UIScreen {
     
     @discardableResult
     func brightnessFade(to brightness: CGFloat, in timeInterval: TimeInterval = 0.5) -> ThenExtension {
-        base.brightness_fade(to: brightness, in: timeInterval)
+        value.brightness_fade(to: brightness, in: timeInterval)
         return self
     }
 }

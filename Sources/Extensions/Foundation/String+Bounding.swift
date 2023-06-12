@@ -15,7 +15,7 @@ public extension ThenExtension where T == String {
         let constraintRect = CGSize(width: width,
                                     height: .greatestFiniteMagnitude)
         let options = NSStringDrawingOptions.usesFontLeading.union(.usesLineFragmentOrigin).union(.truncatesLastVisibleLine)
-        let boundingBox = base.boundingRect(with: constraintRect,
+        let boundingBox = value.boundingRect(with: constraintRect,
                                             options: options,
                                             attributes: [.font: font],
                                             context: nil)
@@ -26,7 +26,7 @@ public extension ThenExtension where T == String {
         let constraintRect = CGSize(width: width,
                                     height: .greatestFiniteMagnitude)
         let options = NSStringDrawingOptions.usesFontLeading.union(.usesLineFragmentOrigin).union(.truncatesLastVisibleLine)
-        let boundingBox = base.boundingRect(with: constraintRect,
+        let boundingBox = value.boundingRect(with: constraintRect,
                                             options: options,
                                             attributes: [.font: font],
                                             context: nil)
@@ -36,7 +36,7 @@ public extension ThenExtension where T == String {
     func boundingWidth(height: CGFloat, font: UIFont) -> CGFloat {
         let constraintRect = CGSize(width: .greatestFiniteMagnitude,
                                     height: height)
-        let boundingBox = base.boundingRect(with: constraintRect,
+        let boundingBox = value.boundingRect(with: constraintRect,
                                             options: .usesLineFragmentOrigin,
                                             attributes: [.font: font],
                                             context: nil)
@@ -47,7 +47,7 @@ public extension ThenExtension where T == String {
         let constraintRect = CGSize(width: width,
                                     height: .greatestFiniteMagnitude)
         let options = NSStringDrawingOptions.usesFontLeading.union(.usesLineFragmentOrigin).union(.truncatesLastVisibleLine)
-        let boundingBox = base.boundingRect(with: constraintRect,
+        let boundingBox = value.boundingRect(with: constraintRect,
                                             options: options,
                                             attributes: [.font: font],
                                             context: nil)

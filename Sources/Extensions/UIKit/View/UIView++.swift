@@ -11,117 +11,117 @@ import ThenFoundation
 public extension ThenExtension where T: UIView {
         
     func debugBorder() {
-        if base.layer.borderWidth > 0 {
+        if value.layer.borderWidth > 0 {
             return
         }
         
         let rc = UIColor(hex: Int.random(in: (0...0xffffff)))
-        base.layer.borderColor = rc.cgColor
-        base.layer.borderWidth = 1
-        base.subviews.forEach { $0.then.debugBorder() }
+        value.layer.borderColor = rc.cgColor
+        value.layer.borderWidth = 1
+        value.subviews.forEach { $0.then.debugBorder() }
     }
 }
 
 public extension ThenExtension where T: UIView {
     
     var top: CGFloat {
-        get { return base.frame.minY }
+        get { return value.frame.minY }
         set {
-            var frame = base.frame
+            var frame = value.frame
             frame.origin.y = newValue
-            base.frame = frame
+            value.frame = frame
         }
     }
     
     var left: CGFloat {
-        get { return base.frame.minX }
+        get { return value.frame.minX }
         set {
-            var frame = base.frame
+            var frame = value.frame
             frame.origin.x = newValue
-            base.frame = frame
+            value.frame = frame
         }
     }
     
     var bottom: CGFloat {
-        get { return base.frame.maxY }
+        get { return value.frame.maxY }
         set {
-            var frame = base.frame
+            var frame = value.frame
             frame.origin.y = newValue - frame.height
-            base.frame = frame
+            value.frame = frame
         }
     }
     
     var right: CGFloat {
-        get { return base.frame.maxX }
+        get { return value.frame.maxX }
         set {
-            var frame = base.frame
+            var frame = value.frame
             frame.origin.x = newValue - frame.width
-            base.frame = frame
+            value.frame = frame
         }
     }
     
     var centerX: CGFloat {
-        get { return base.frame.midX }
+        get { return value.frame.midX }
         set {
-            var frame = base.frame
+            var frame = value.frame
             frame.origin.x = newValue - frame.width / 2.0
-            base.frame = frame
+            value.frame = frame
         }
     }
     
     var centerY: CGFloat {
-        get { return base.frame.midY }
+        get { return value.frame.midY }
         set {
-            var frame = base.frame
+            var frame = value.frame
             frame.origin.y = newValue - frame.height / 2.0
-            base.frame = frame
+            value.frame = frame
         }
     }
     
     var origin: CGPoint {
-        get { return base.frame.origin }
+        get { return value.frame.origin }
         set {
-            var frame = base.frame
+            var frame = value.frame
             frame.origin = newValue
-            base.frame = frame
+            value.frame = frame
         }
     }
     
     var center: CGPoint {
-        get { return base.center}
-        set { base.center = newValue }
+        get { return value.center}
+        set { value.center = newValue }
     }
     
     var size: CGSize {
-        get { return base.frame.size }
+        get { return value.frame.size }
         set {
-            var frame = base.frame
+            var frame = value.frame
             frame.size = newValue
-            base.frame = frame
+            value.frame = frame
         }
     }
     
     var width: CGFloat {
-        get { return base.frame.width }
+        get { return value.frame.width }
         set {
-            var frame = base.frame
+            var frame = value.frame
             frame.size.width = newValue
-            base.frame = frame
+            value.frame = frame
         }
     }
     
     var height: CGFloat {
-        get { return base.frame.height }
+        get { return value.frame.height }
         set {
-            var frame = base.frame
+            var frame = value.frame
             frame.size.height = newValue
-            base.frame = frame
+            value.frame = frame
         }
     }
     
     var safeAreaInsets: UIEdgeInsets {
         if #available(iOS 11.0, *) {
-            return base.safeAreaInsets
+            return value.safeAreaInsets
         } else {
             return .zero
         }
@@ -131,9 +131,9 @@ public extension ThenExtension where T: UIView {
 public extension ThenExtension where T: UIView {
     
     func layout(_ closure: (_ maker: ThenViewLayoutMaker) -> ()) {
-        let m = ThenViewLayoutMaker(rect: base.frame)
+        let m = ThenViewLayoutMaker(rect: value.frame)
         closure(m)
-        base.frame = m.frame
+        value.frame = m.frame
     }
 }
 

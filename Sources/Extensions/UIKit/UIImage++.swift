@@ -17,10 +17,10 @@ public extension ThenExtension where T: UIImage {
     
     /// 某块像素点的平均颜色值
     func color(in rect: CGRect) -> UIColor? {
-        let bounds = CGRect(x: 0, y: 0, width: base.size.width, height: base.size.height)
+        let bounds = CGRect(x: 0, y: 0, width: value.size.width, height: value.size.height)
         guard
             bounds.intersects(rect),
-            let cgimage = base.cgImage,
+            let cgimage = value.cgImage,
             let dataProvider = cgimage.dataProvider,
             let data = dataProvider.data,
             let pointer = CFDataGetBytePtr(data)
@@ -30,7 +30,7 @@ public extension ThenExtension where T: UIImage {
         
         let comptsPerPixel = cgimage.bitsPerPixel / cgimage.bitsPerComponent
         
-        let image_w = Int(base.size.width)
+        let image_w = Int(value.size.width)
         
         let interRect = bounds.intersection(rect)
         
@@ -67,7 +67,7 @@ public extension ThenExtension where T: UIImage {
     /// 图片二维码识别
     var qrCodes: [String] {
         
-        guard let ciImage = CIImage(image: base) else { return [] }
+        guard let ciImage = CIImage(image: value) else { return [] }
         let context = CIContext()
         var options: [String: Any] = [CIDetectorAccuracy: CIDetectorAccuracyHigh]
         let qrDetector = CIDetector(ofType: CIDetectorTypeQRCode, context: context, options: options)
@@ -87,7 +87,7 @@ public extension ThenExtension where T: UIImage {
     
     /// Size in bytes of UIImage
     var bytesSize: Int {
-        return base.jpegData(compressionQuality: 1)?.count ?? 0
+        return value.jpegData(compressionQuality: 1)?.count ?? 0
     }
     
     /// Compressed UIImage from original UIImage.
@@ -95,7 +95,7 @@ public extension ThenExtension where T: UIImage {
     /// - Parameter quality: The quality of the resulting JPEG image, expressed as a value from 0.0 to 1.0. The value 0.0 represents the maximum compression (or lowest quality) while the value 1.0 represents the least compression (or best quality), (default is 0.5).
     /// - Returns: optional UIImage (if applicable).
     func compressed(quality: CGFloat = 0.5) -> UIImage? {
-        guard let data = base.jpegData(compressionQuality: quality) else { return nil }
+        guard let data = value.jpegData(compressionQuality: quality) else { return nil }
         return UIImage(data: data)
     }
 }
@@ -107,7 +107,7 @@ public extension ThenExtension where T: UIImage {
     /// - Parameter rect: CGRect to crop UIImage to.
     /// - Returns: cropped UIImage
     func cropped(to rect: CGRect) -> UIImage {
-        return base.cropped(to: rect)
+        return value.cropped(to: rect)
     }
     
     ///  UIImage scaled to height with respect to aspect ratio.
@@ -117,7 +117,7 @@ public extension ThenExtension where T: UIImage {
     ///   - opaque: flag indicating whether the bitmap is opaque.
     /// - Returns: optional scaled UIImage (if applicable).
     func scaled(toHeight: CGFloat, opaque: Bool = false) -> UIImage? {
-        return base.scaled(toHeight: toHeight, opaque: opaque)
+        return value.scaled(toHeight: toHeight, opaque: opaque)
     }
     
     ///  UIImage scaled to width with respect to aspect ratio.
@@ -127,7 +127,7 @@ public extension ThenExtension where T: UIImage {
     ///   - opaque: flag indicating whether the bitmap is opaque.
     /// - Returns: optional scaled UIImage (if applicable).
     func scaled(toWidth: CGFloat, opaque: Bool = false) -> UIImage? {
-        return base.scaled(toWidth: toWidth, opaque: opaque)
+        return value.scaled(toWidth: toWidth, opaque: opaque)
     }
     
     ///  Creates a copy of the receiver rotated by the given angle.
@@ -139,7 +139,7 @@ public extension ThenExtension where T: UIImage {
     /// - Returns: A new image rotated by the given angle.
     @available(iOS 10.0, tvOS 10.0, watchOS 3.0, *)
     func rotated(by angle: Measurement<UnitAngle>) -> UIImage? {
-        return base.rotated(by: angle)
+        return value.rotated(by: angle)
     }
     
     ///  Creates a copy of the receiver rotated by the given angle (in radians).
@@ -150,7 +150,7 @@ public extension ThenExtension where T: UIImage {
     /// - Parameter radians: The angle, in radians, by which to rotate the image.
     /// - Returns: A new image rotated by the given angle.
     func rotated(by radians: CGFloat) -> UIImage? {
-        return base.rotated(by: radians)
+        return value.rotated(by: radians)
     }
     
     ///  UIImage with rounded corners
@@ -160,7 +160,7 @@ public extension ThenExtension where T: UIImage {
     ///   - radius: corner radius (optional), resulting image will be round if unspecified
     /// - Returns: UIImage with all corners rounded
     func roundCorners(byRoundingCorners: UIRectCorner = UIRectCorner.allCorners, radius: CGFloat? = nil) -> UIImage? {
-        return base.roundCorners(byRoundingCorners: byRoundingCorners, radius: radius)
+        return value.roundCorners(byRoundingCorners: byRoundingCorners, radius: radius)
     }
     
     /// UIImage tinted with color
@@ -170,26 +170,26 @@ public extension ThenExtension where T: UIImage {
     ///   - blendMode: how to blend the tint
     /// - Returns: UIImage tinted with given color.
     func tint(_ color: UIColor, blendMode: CGBlendMode) -> UIImage? {
-        return base.tint(color, blendMode: blendMode)
+        return value.tint(color, blendMode: blendMode)
     }
     
     
     /// UIImage Circle Clip in Center
     func circleClip() -> UIImage? {
-        return base.circleClip()
+        return value.circleClip()
     }
     
     
     /// save to album
     @discardableResult
     func albumSave() -> ThenExtension {
-        base.albumSave()
+        value.albumSave()
         return self
     }
 
     /// device gray
     func deviceGray() -> UIImage? {
-        return base.deviceGray()
+        return value.deviceGray()
     }
 }
 

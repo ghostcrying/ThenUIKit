@@ -17,52 +17,52 @@ public extension ThenExtension where T: UIColor {
     /// 反色 (F0F0F0 -> 0F0F0F)
     func inverted(_ alpha: CGFloat? = nil) -> UIColor? {
         var r: CGFloat = 0; var g: CGFloat = 0; var b: CGFloat = 0; var a: CGFloat = 0
-        guard base.getRed(&r, green: &g, blue: &b, alpha: &a) else { return nil }
+        guard value.getRed(&r, green: &g, blue: &b, alpha: &a) else { return nil }
         return UIColor(red: 1 - r, green: 1 - g, blue: 1 - b, alpha: alpha ?? (1 - a))
     }
     
     /// 按百分比减淡颜色值 (000000 -> 111111)
     func burn(_ percent: CGFloat, _ alpha: CGFloat? = nil) -> UIColor? {
         var r: CGFloat = 0; var g: CGFloat = 0; var b: CGFloat = 0; var a: CGFloat = 0
-        guard base.getRed(&r, green: &g, blue: &b, alpha: &a) else { return nil }
+        guard value.getRed(&r, green: &g, blue: &b, alpha: &a) else { return nil }
         return UIColor(red: r * (1 - percent), green: g * (1 - percent), blue: b * (1 - percent), alpha: alpha ?? a)
     }
     
     /// 按百分比加深颜色值 (FFFFFF -> EEEEEE)
     func dodge(_ percent: CGFloat, _ alpha: CGFloat? = nil) -> UIColor? {
         var r: CGFloat = 0; var g: CGFloat = 0; var b: CGFloat = 0; var a: CGFloat = 0
-        guard base.getRed(&r, green: &g, blue: &b, alpha: &a) else { return nil }
+        guard value.getRed(&r, green: &g, blue: &b, alpha: &a) else { return nil }
         return UIColor(red: r * (1 + percent), green: g * (1 + percent), blue: b * (1 + percent), alpha: alpha ?? a)
     }
     
     
     var components: [CGFloat]? {
         var r: CGFloat = 0; var g: CGFloat = 0; var b: CGFloat = 0; var a: CGFloat = 0
-        guard base.getRed(&r, green: &g, blue: &b, alpha: &a) else { return nil }
+        guard value.getRed(&r, green: &g, blue: &b, alpha: &a) else { return nil }
         return [r, g, b, a]
     }
     
     var red: CGFloat? {
         var r: CGFloat = 0
-        guard base.getRed(&r, green: nil, blue: nil, alpha: nil) else { return nil }
+        guard value.getRed(&r, green: nil, blue: nil, alpha: nil) else { return nil }
         return r
     }
     
     var green: CGFloat? {
         var g: CGFloat = 0
-        guard base.getRed(nil, green: &g, blue: nil, alpha: nil) else { return nil }
+        guard value.getRed(nil, green: &g, blue: nil, alpha: nil) else { return nil }
         return g
     }
     
     var blue: CGFloat? {
         var b: CGFloat = 0
-        guard base.getRed(nil, green: nil, blue: &b, alpha: nil) else { return nil }
+        guard value.getRed(nil, green: nil, blue: &b, alpha: nil) else { return nil }
         return b
     }
     
     var alpha: CGFloat? {
         var a: CGFloat = 0
-        guard base.getRed(nil, green: nil, blue: nil, alpha: &a) else { return nil }
+        guard value.getRed(nil, green: nil, blue: nil, alpha: &a) else { return nil }
         return a
     }
     

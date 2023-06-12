@@ -29,7 +29,7 @@ public extension UIApplication {
 public extension ThenExtension where T: UIApplication {
         
     var rootController: UIViewController? {        
-        return findTop(base.window?.rootViewController)
+        return findTop(value.window?.rootViewController)
     }
     
     /// exit application
@@ -39,7 +39,7 @@ public extension ThenExtension where T: UIApplication {
     }
     
     var orientationTransform: CGAffineTransform {
-        switch base.statusBarOrientation {
+        switch value.statusBarOrientation {
         case .portrait:             return .identity
         case .portraitUpsideDown:   return CGAffineTransform(rotationAngle: .pi)
         case .landscapeLeft:        return CGAffineTransform(rotationAngle: .pi / -2.0)

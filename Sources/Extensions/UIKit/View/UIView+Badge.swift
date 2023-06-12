@@ -11,7 +11,7 @@ import ThenFoundation
 public extension ThenExtension where T: ViewableType {
     
     var badge: UIViewBadgeProxy {
-        return UIViewBadgeProxy(base: base)
+        return UIViewBadgeProxy(value)
     }
 }
 
@@ -26,9 +26,9 @@ public class UIViewBadgeProxy {
     private let badgeTag: Int = 0xeeee
     private let valueMaxSize: CGSize = CGSize(width: 100, height: 20)
     
-    private var base: ViewableType
-    fileprivate init(base: ViewableType) {
-        self.base = base
+    private var view: ViewableType
+    fileprivate init(_ view: ViewableType) {
+        self.view = view
     }
     
     @discardableResult
@@ -68,7 +68,7 @@ public class UIViewBadgeProxy {
     
     private func addBadge() {
         if let _ = badgeView.superview { return }
-        base.addSub(badgeView)
+        view.addSub(badgeView)
         badgeView.layer.then.popup(0.2)
     }
     
@@ -81,12 +81,12 @@ public class UIViewBadgeProxy {
         badgeView.layer.cornerRadius = size.height / 2.0
         badgeView.then.layout {
             $0.size = size
-            $0.center = CGPoint(x: base.bounds.width + offset.x, y: offset.y)
+            $0.center = CGPoint(x: view.bounds.width + offset.x, y: offset.y)
         }
     }
     
     private var badgeView: UILabel {
-        if let l = base.viewWithTag(badgeTag) as? UILabel {
+        if let l = view.viewWithTag(badgeTag) as? UILabel {
             return l
         }
         let label = UILabel(frame: CGRect(x: 0, y: 0, width: valueMaxSize.width, height: valueMaxSize.height))

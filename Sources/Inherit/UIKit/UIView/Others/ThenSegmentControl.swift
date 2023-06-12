@@ -24,7 +24,7 @@ open class ThenSegmentControl: UIScrollView {
         didSet {
             segments.forEach { $0.removeFromSuperview() }
             segments = items.compactMap {
-                Button(item: $0).then.on(.touchUpInside) { [weak self] in self?.action($0) }.base
+                Button(item: $0).then.on(.touchUpInside) { [weak self] in self?.action($0) }.value
             }
             segments.forEach { addSubview($0) }
             setNeedsLayout()

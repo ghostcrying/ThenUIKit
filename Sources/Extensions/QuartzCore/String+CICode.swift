@@ -22,7 +22,7 @@ public extension ThenExtension where T == String {
     /// scale default is (3, 3)
     func barCodeImage(quietSpace: CGFloat = 7.0, scale: CGPoint = CGPoint(x: 3, y: 3)) -> UIImage? {
         guard
-            let data = base.data(using: String.Encoding.ascii),
+            let data = value.data(using: String.Encoding.ascii),
             let filter = CIFilter(name: "CICode128BarcodeGenerator")
             else {
                 return nil
@@ -55,7 +55,7 @@ public extension ThenExtension where T == String {
     /// size default is (200, 200)
     func qrCodeImage(_ size: CGSize = CGSize(width: 200, height: 200), level: QRInputCorrectionLevel = .H, logo: UIImage? = nil, logoSize: CGSize? = nil) -> UIImage? {
         guard
-            let data = base.data(using: String.Encoding.utf8),
+            let data = value.data(using: String.Encoding.utf8),
             let filter = CIFilter(name: "CIQRCodeGenerator")
             else {
                 return nil

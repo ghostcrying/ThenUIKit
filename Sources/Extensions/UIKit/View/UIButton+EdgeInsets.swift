@@ -23,11 +23,11 @@ public extension ThenExtension where T: UIButton {
     @discardableResult
     func layoutButton(position: UIButton.ImagePosition, space imageTitleSpace: CGFloat) -> ThenExtension {
         // 得到imageView和titleLabel的宽高
-        let imageWidth = base.imageView?.frame.size.width ?? 0.0
-        let imageHeight = base.imageView?.frame.size.height ?? 0.0
+        let imageWidth = value.imageView?.frame.size.width ?? 0.0
+        let imageHeight = value.imageView?.frame.size.height ?? 0.0
         
-        let labelWidth: CGFloat = base.titleLabel?.intrinsicContentSize.width ?? 0.0
-        let labelHeight: CGFloat = base.titleLabel?.intrinsicContentSize.height ?? 0.0
+        let labelWidth: CGFloat = value.titleLabel?.intrinsicContentSize.width ?? 0.0
+        let labelHeight: CGFloat = value.titleLabel?.intrinsicContentSize.height ?? 0.0
         
         // 初始化imageEdgeInsets和labelEdgeInsets
         var imageEdgeInsets = UIEdgeInsets.zero
@@ -49,8 +49,8 @@ public extension ThenExtension where T: UIButton {
             labelEdgeInsets = UIEdgeInsets(top: 0, left: -imageWidth-imageTitleSpace/2, bottom: 0, right: imageWidth+imageTitleSpace/2)
         }
         
-        base.titleEdgeInsets = labelEdgeInsets
-        base.imageEdgeInsets = imageEdgeInsets
+        value.titleEdgeInsets = labelEdgeInsets
+        value.imageEdgeInsets = imageEdgeInsets
         
         return self
     }

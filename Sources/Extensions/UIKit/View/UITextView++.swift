@@ -12,7 +12,7 @@ public extension ThenExtension where T: UITextView {
     
     /// Move Cursor To Last Insert
     func movelastCursor() -> ThenExtension {
-        base.movelastCursor()
+        value.movelastCursor()
         return self
     }
 }

@@ -12,9 +12,9 @@ public extension ThenExtension where T: UITextView {
     
     @discardableResult
     func on(_ type: ThenTextViewActionTypes) -> ThenExtension {
-        guard let targets = base.kit_textViewTarget else {
-            base.kit_textViewTarget = TextViewDelegateTarget(base)
-            base.kit_textViewTarget?.on(type)
+        guard let targets = value.kit_textViewTarget else {
+            value.kit_textViewTarget = TextViewDelegateTarget(value)
+            value.kit_textViewTarget?.on(type)
             return self
         }
         targets.on(type)
@@ -23,9 +23,9 @@ public extension ThenExtension where T: UITextView {
     
     @discardableResult
     func off(_ type: ThenTextViewActionTypes) -> ThenExtension {
-        base.kit_textViewTarget?.off(type)
-        guard let types = base.kit_textViewTarget?.types, types.count > 0 else {
-            base.kit_textViewTarget = nil
+        value.kit_textViewTarget?.off(type)
+        guard let types = value.kit_textViewTarget?.types, types.count > 0 else {
+            value.kit_textViewTarget = nil
             return self
         }
         return self

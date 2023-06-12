@@ -12,28 +12,28 @@ public extension ThenExtension where T: CALayer {
     
     @discardableResult
     func gradientApply(frame: CGRect, start: CGPoint, end: CGPoint, colors: [UIColor]) -> ThenExtension {
-        let gradient = base.gradientLayer ?? CAGradientLayer()
+        let gradient = value.gradientLayer ?? CAGradientLayer()
         gradient.frame = frame
         gradient.startPoint = start
         gradient.endPoint = end
         gradient.colors = colors.compactMap { $0.cgColor }
         if gradient.superlayer == nil {
-            base.insertSublayer(gradient, at: 0)
+            value.insertSublayer(gradient, at: 0)
         }
-        base.gradientLayer = gradient
+        value.gradientLayer = gradient
         return self
     }
     
     @discardableResult
     func gradientRemove() -> ThenExtension {
-        base.gradientLayer?.removeFromSuperlayer()
-        base.gradientLayer = nil
+        value.gradientLayer?.removeFromSuperlayer()
+        value.gradientLayer = nil
         return self
     }
     
     var gradientLayer: CAGradientLayer? {
-        get { return base.gradientLayer }
-        set { base.gradientLayer = newValue }
+        get { return value.gradientLayer }
+        set { value.gradientLayer = newValue }
     }
     
 }

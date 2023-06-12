@@ -20,7 +20,7 @@ public extension ThenExtension where T: ViewableType {
             return nil
         }
         context.translateBy(x: -point.x, y: -point.y)
-        base.layer.render(in: context)
+        value.layer.render(in: context)
         return .init(Int(pixel[0]), Int(pixel[1]), Int(pixel[2]), Int(pixel[3]))
     }
 }

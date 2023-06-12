@@ -20,26 +20,26 @@ public extension ThenExtension where T: CALayer {
                        rasterizationScale: CGFloat = UIScreen.main.scale,
                        shadowPath: CGPath? = nil) -> ThenExtension {
         
-        base.shadowColor     = color.cgColor
-        base.shadowOpacity   = opacity
-        base.shadowOffset    = offset
-        base.shadowRadius    = radius
-        base.masksToBounds   = maskToBounds
-        base.shouldRasterize = shouldRasterize
-        base.rasterizationScale = rasterizationScale
+        value.shadowColor     = color.cgColor
+        value.shadowOpacity   = opacity
+        value.shadowOffset    = offset
+        value.shadowRadius    = radius
+        value.masksToBounds   = maskToBounds
+        value.shouldRasterize = shouldRasterize
+        value.rasterizationScale = rasterizationScale
         if let `shadowPath` = shadowPath {
-            base.shadowPath = shadowPath
+            value.shadowPath = shadowPath
         }
         return self
     }
     
     @discardableResult
     func shadowRemove() -> ThenExtension {
-        base.shadowColor    = UIColor.clear.cgColor
-        base.shadowOpacity  = 0.0
-        base.shadowOffset   = .zero
-        base.shadowRadius   = 0
-        base.shadowPath     = nil
+        value.shadowColor    = UIColor.clear.cgColor
+        value.shadowOpacity  = 0.0
+        value.shadowOffset   = .zero
+        value.shadowRadius   = 0
+        value.shadowPath     = nil
         return self
     }
     

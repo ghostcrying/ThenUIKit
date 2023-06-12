@@ -13,7 +13,7 @@ public extension ThenExtension where T: UIButton {
     /// shadow
     @discardableResult
     func applyShadow(color: UIColor = UIColor(hex: 0x000000).withAlphaComponent(0.25)) -> ThenExtension {
-        base.applyShadow(color: color)
+        value.applyShadow(color: color)
         return self
     }
 

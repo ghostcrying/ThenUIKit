@@ -13,19 +13,19 @@ public extension ThenExtension where T: ViewableType {
     
     @discardableResult
     func addRadarAnimation(beginSize size: CGSize, fillColor: UIColor = .white, expand increment: CGFloat = 30, beginAlpha: CGFloat = 0.5) -> ThenExtension {
-        base.addRadarAnimation(beginSize: size, fillColor: fillColor, expand: increment, beginAlpha: beginAlpha)
+        value.addRadarAnimation(beginSize: size, fillColor: fillColor, expand: increment, beginAlpha: beginAlpha)
         return self
     }
     
     @discardableResult
     func addRadarAnimation(inset: UIEdgeInsets = .zero, fillColor: UIColor = .white, expand increment: CGFloat = 30, beginAlpha: CGFloat = 0.5) -> ThenExtension {
-        base.addRadarAnimation(inset: inset, fillColor: fillColor, expand: increment, beginAlpha: beginAlpha)
+        value.addRadarAnimation(inset: inset, fillColor: fillColor, expand: increment, beginAlpha: beginAlpha)
         return self
     }
     
     @discardableResult
     func removeRadarAnimation() -> ThenExtension {
-        base.removeRadarAnimation()
+        value.removeRadarAnimation()
         return self
     }
 }

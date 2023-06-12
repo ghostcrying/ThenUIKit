@@ -12,7 +12,7 @@ import ThenFoundation
 public extension ThenExtension where T: CALayer {
     
     /// 边框 & 边角
-    var border: ThenBorderProxy { return ThenBorderProxy(self.base) }
+    var border: ThenBorderProxy { return ThenBorderProxy(self.value) }
 }
 
 public struct ThenBorderProxy {

@@ -11,12 +11,12 @@ import ThenFoundation
 public extension ThenExtension where T: UIView {
     
     var currentViewController: UIViewController? {
-        return base.currentViewController
+        return value.currentViewController
     }
     
     /// Delay Interaction  Enable
     func delay(_ time: TimeInterval = 1) -> ThenExtension {
-        base.delay(time)
+        value.delay(time)
         return self
     }
 }

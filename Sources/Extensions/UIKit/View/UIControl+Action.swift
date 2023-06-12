@@ -12,8 +12,8 @@ public extension ThenExtension where T: UIButton {
         
     /// 间隔delayInterval后才响应点击
     var delayInterval: TimeInterval {
-        get { return base.kit_delayInterval ?? 0 }
-        set { base.kit_delayInterval = newValue }
+        get { return value.kit_delayInterval ?? 0 }
+        set { value.kit_delayInterval = newValue }
     }
 }
 
@@ -21,30 +21,30 @@ public extension ThenExtension where T: UIControl {
     
     @discardableResult
     func on(_ event: UIControl.Event = .touchUpInside, _ closure: @escaping @autoclosure () -> Void) -> ThenExtension {
-        var temp: [ControlTarget] = base.kit_controlTargets ?? []
-        let target = ControlTarget(control: base, controlEvents: event) { _ in
+        var temp: [ControlTarget] = value.kit_controlTargets ?? []
+        let target = ControlTarget(control: value, controlEvents: event) { _ in
             closure()
         }
         temp.append(target)
-        base.kit_controlTargets = temp
+        value.kit_controlTargets = temp
         return self
     }
     
     @discardableResult
     func on(_ event: UIControl.Event = .touchUpInside, _ closure: @escaping (T) -> Void) -> ThenExtension {
-        var temp: [ControlTarget] = base.kit_controlTargets ?? []
-        let target = ControlTarget(control: base, controlEvents: event) { _ in
-            closure(self.base)
+        var temp: [ControlTarget] = value.kit_controlTargets ?? []
+        let target = ControlTarget(control: value, controlEvents: event) { _ in
+            closure(self.value)
         }
         temp.append(target)
-        base.kit_controlTargets = temp
+        value.kit_controlTargets = temp
         return self
     }
     
     @discardableResult
     func off(for event: UIControl.Event = .touchUpInside) -> ThenExtension {
-        base.kit_controlTargets?.filter({ $0.controlEvents == event }).forEach({ $0.dispose() })
-        base.kit_controlTargets = base.kit_controlTargets?.filter({ $0.controlEvents != event })
+        value.kit_controlTargets?.filter({ $0.controlEvents == event }).forEach({ $0.dispose() })
+        value.kit_controlTargets = value.kit_controlTargets?.filter({ $0.controlEvents != event })
         return self
     }
     

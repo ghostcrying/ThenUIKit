@@ -13,40 +13,40 @@ public extension ThenExtension where T: UIView {
     /// 绘制线条
     @discardableResult
     func drawline(points: [CGPoint], lineWidth: CGFloat, lineColor: UIColor) -> ThenExtension {
-        base.drawline(points: points, lineWidth: lineWidth, lineColor: lineColor)
+        value.drawline(points: points, lineWidth: lineWidth, lineColor: lineColor)
         return self
     }
     
     /// 绘制虚线
     @discardableResult
     func drawDashline(points: [CGPoint], lineWidth: CGFloat, lineColor: UIColor) -> ThenExtension {
-        base.drawDashline(points: points, lineWidth: lineWidth, lineColor: lineColor)
+        value.drawDashline(points: points, lineWidth: lineWidth, lineColor: lineColor)
         return self
     }
     
     /// 绘制矩形
     @discardableResult
     func drawRectAngle(rect: CGRect, color: UIColor) -> ThenExtension {
-        base.drawRectAngle(rect: rect, color: color)
+        value.drawRectAngle(rect: rect, color: color)
         return self
     }
     
     /// 绘制图片
     @discardableResult
     func drawImage(name: String? = nil, rect: CGRect) -> ThenExtension {
-        base.drawImage(name: name, rect: rect)
+        value.drawImage(name: name, rect: rect)
         return self
     }
     
     /// 渐变边框
     func gradientBorder(direction: UIView.GradientDirection = .horizontal, radius: CGFloat, lineWidth: CGFloat, colors: [UIColor]) -> ThenExtension {
-        base.gradientBorder(direction:direction, radius: radius, lineWidth: lineWidth, colors: colors)
+        value.gradientBorder(direction:direction, radius: radius, lineWidth: lineWidth, colors: colors)
         return self
     }
     
     /// 渐变背景
     func gradientBackground(direction: UIView.GradientDirection = .horizontal, colors: [UIColor]) -> ThenExtension {
-        base.gradientBackground(direction: direction, colors: colors)
+        value.gradientBackground(direction: direction, colors: colors)
         return self
     }
 }

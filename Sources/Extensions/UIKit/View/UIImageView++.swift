@@ -12,7 +12,7 @@ public extension ThenExtension where T: UIImageView {
     
     /// blur
     func blurred(withStyle style: UIBlurEffect.Style = .light) -> ThenExtension {
-        base.blur(withStyle: style)
+        value.blur(withStyle: style)
         return self
     }
 }
