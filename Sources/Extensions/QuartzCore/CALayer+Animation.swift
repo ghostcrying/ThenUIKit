@@ -16,7 +16,8 @@ public extension ThenExtension where T: CALayer {
                           CATransform3DMakeScale(1.1, 1.1, 1.0),
                           CATransform3DMakeScale(1.0, 1.0, 1.0)]
         animate.duration = duration
-        value.add(animate, forKey:"popup")
+        
+        value.add(animate, forKey: "popup")
     }
 }
 

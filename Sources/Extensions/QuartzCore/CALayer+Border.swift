@@ -6,8 +6,8 @@
 //
 
 import UIKit
-import ObjectiveC.runtime
 import ThenFoundation
+import ObjectiveC.runtime
 
 public extension ThenExtension where T: CALayer {
     

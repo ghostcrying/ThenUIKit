@@ -30,10 +30,10 @@ TODO: Add long description of the pod here.
   s.swift_version = "5.0"
 
   s.source_files = 'Sources/**/*.{swift,h,m}', 'Sources/*.h'
-  s.public_header_files = 'Sources/*.h'
   
   s.frameworks = 'Foundation', 'UIKit'
   
-  s.dependency "ThenFoundation"
+  s.dependency 'ThenFoundation', '~> 0.0.6'
+  
 end
 

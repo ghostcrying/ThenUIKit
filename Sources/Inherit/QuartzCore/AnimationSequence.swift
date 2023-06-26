@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import ThenFoundation
 
 public protocol AnimationSequenceDelegate: NSObjectProtocol {
     

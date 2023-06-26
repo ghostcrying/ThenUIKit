@@ -85,6 +85,7 @@
 /* Begin PBXFileReference section */
 		9E3EE84329D57E5100415CA4 /* Symbols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Symbols.swift; sourceTree = "<group>"; };
 		9E48C8A02A493589005C260D /* UINavigationController++.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController++.swift"; sourceTree = "<group>"; };
+		9E48C8A22A493878005C260D /* ThenUIKit.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = ThenUIKit.podspec; sourceTree = "<group>"; };
 		9E525C0229CAAC3E001AC37E /* ThenUIKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ThenUIKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E525C1D29CAACB1001AC37E /* Constrant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constrant.swift; sourceTree = "<group>"; };
 		9E525C1E29CAACB1001AC37E /* ViewableType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewableType.swift; sourceTree = "<group>"; };
@@ -182,6 +183,7 @@
 		9E525BF829CAAC3E001AC37E = {
 			isa = PBXGroup;
 			children = (
+				9E48C8A22A493878005C260D /* ThenUIKit.podspec */,
 				9E525C1A29CAACB1001AC37E /* Sources */,
 				9E525C0329CAAC3E001AC37E /* Products */,
 				9E525CB029CAAE18001AC37E /* Frameworks */,

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import ThenFoundation
 import ObjectiveC.runtime
 
 extension CAAnimation {
