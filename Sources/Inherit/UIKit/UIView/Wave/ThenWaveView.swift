@@ -2,7 +2,7 @@
 //  ThenWaveView.swift
 //  ThenUIKit
 //
-//  Created by 陈卓 on 2023/5/17.
+//  Created by ghost on 2023/5/17.
 //
 
 import UIKit

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		9E3EE84429D57E5100415CA4 /* Symbols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E3EE84329D57E5100415CA4 /* Symbols.swift */; };
+		9E48C8A12A493589005C260D /* UINavigationController++.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E48C8A02A493589005C260D /* UINavigationController++.swift */; };
 		9E525C7029CAACB1001AC37E /* Constrant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E525C1D29CAACB1001AC37E /* Constrant.swift */; };
 		9E525C7129CAACB1001AC37E /* ViewableType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E525C1E29CAACB1001AC37E /* ViewableType.swift */; };
 		9E525C7229CAACB1001AC37E /* ThenAlbumPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E525C2129CAACB1001AC37E /* ThenAlbumPicker.swift */; };
@@ -83,6 +84,7 @@
 
 /* Begin PBXFileReference section */
 		9E3EE84329D57E5100415CA4 /* Symbols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Symbols.swift; sourceTree = "<group>"; };
+		9E48C8A02A493589005C260D /* UINavigationController++.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController++.swift"; sourceTree = "<group>"; };
 		9E525C0229CAAC3E001AC37E /* ThenUIKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ThenUIKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E525C1D29CAACB1001AC37E /* Constrant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constrant.swift; sourceTree = "<group>"; };
 		9E525C1E29CAACB1001AC37E /* ViewableType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewableType.swift; sourceTree = "<group>"; };
@@ -300,6 +302,7 @@
 		9E525C4029CAACB1001AC37E /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				9E48C8A02A493589005C260D /* UINavigationController++.swift */,
 				9E525C4129CAACB1001AC37E /* UIViewController+Navigation.swift */,
 			);
 			path = ViewController;
@@ -619,6 +622,7 @@
 				9E525CBD29CAB1AD001AC37E /* CALayer+Group.swift in Sources */,
 				9E525CA929CAACB1001AC37E /* ThenCircleProgressView.swift in Sources */,
 				9E3EE84429D57E5100415CA4 /* Symbols.swift in Sources */,
+				9E48C8A12A493589005C260D /* UINavigationController++.swift in Sources */,
 				9E525C7629CAACB1001AC37E /* UIApplication++.swift in Sources */,
 				9E525C8129CAACB1001AC37E /* UIView+Radar.swift in Sources */,
 				9E525C9F29CAACB1001AC37E /* ThenInputFieldCell.swift in Sources */,
