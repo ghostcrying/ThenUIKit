@@ -39,12 +39,14 @@ public extension ThenExtension where T: UIView {
     }
     
     /// 渐变边框
+    @discardableResult
     func gradientBorder(direction: UIView.GradientDirection = .horizontal, radius: CGFloat, lineWidth: CGFloat, colors: [UIColor]) -> ThenExtension {
         value.gradientBorder(direction:direction, radius: radius, lineWidth: lineWidth, colors: colors)
         return self
     }
     
     /// 渐变背景
+    @discardableResult
     func gradientBackground(direction: UIView.GradientDirection = .horizontal, colors: [UIColor]) -> ThenExtension {
         value.gradientBackground(direction: direction, colors: colors)
         return self

@@ -15,9 +15,42 @@ public extension ThenExtension where T: UITextField {
         value.movelastCursor()
         return self
     }
+    
+    /// Set placeholder text color.
+    func setPlaceholderTextColor(_ color: UIColor) -> ThenExtension {
+        value.setPlaceholderTextColor(color)
+        return self
+    }
+    
+    /// Set placeholder text and its color
+    func placeholder(text: String, color: UIColor = .gray) -> ThenExtension {
+        value.placeholder(text: text, color: color)
+        return self
+    }
+    
+    /// The closure is used to configure the UITextField object. The UITextField object is passed as a parameter to the closure.
+    func config(textField configurate: UITextField.TextFieldConfig?) -> ThenExtension {
+        value.config(textField: configurate)
+        return self
+    }
+    
+    /// A method that takes an UIImage object and a UIColor object as parameters.
+    /// It sets the left view of the text field to an image view with the specified image and color. If the image parameter is nil, the left view is hidden.
+    func left(image: UIImage?, color: UIColor = .black) -> ThenExtension {
+        value.left(image: image, color: color)
+        return self
+    }
+    
+    /// A method that takes an UIImage object and a UIColor object as parameters.
+    /// It sets the right view of the text field to an image view with the specified image and color. If the image parameter is nil, the right view is hidden
+    func right(image: UIImage?, color: UIColor = .black) -> ThenExtension {
+        value.right(image: image, color: color)
+        return self
+    }
+    
 }
 
-extension UITextField {
+public extension UITextField {
     
     /// maxlength: 限制输入长度
     /// 返回:
@@ -70,4 +103,62 @@ extension UITextField {
             }
         }
     }
+    
+    /// Set placeholder text color.
+    ///
+    /// - Parameter color: placeholder text color.
+    func setPlaceholderTextColor(_ color: UIColor) {
+        self.attributedPlaceholder = NSAttributedString(string:self.placeholder != nil ? self.placeholder! : "", attributes:[NSAttributedString.Key.foregroundColor: color])
+    }
+    
+    /// Set placeholder text and its color
+    func placeholder(text: String, color: UIColor = .gray) {
+        self.attributedPlaceholder = NSAttributedString(string: text, attributes: [NSAttributedString.Key.foregroundColor: color])
+    }
+        
+}
+
+public extension UITextField {
+    
+    typealias TextFieldConfig = (UITextField) -> Swift.Void
+    
+    /// The closure is used to configure the UITextField object. The UITextField object is passed as a parameter to the closure.
+    func config(textField configurate: TextFieldConfig?) {
+        configurate?(self)
+    }
+    
+    /// A method that takes an UIImage object and a UIColor object as parameters.
+    /// It sets the left view of the text field to an image view with the specified image and color. If the image parameter is nil, the left view is hidden.
+    func left(image: UIImage?, color: UIColor = .black) {
+        if let image = image {
+            leftViewMode = UITextField.ViewMode.always
+            let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
+            imageView.contentMode = .scaleAspectFit
+            imageView.image = image
+            imageView.image = imageView.image?.withRenderingMode(.alwaysTemplate)
+            imageView.tintColor = color
+            leftView = imageView
+        } else {
+            leftViewMode = UITextField.ViewMode.never
+            leftView = nil
+        }
+    }
+    
+    /// A method that takes an UIImage object and a UIColor object as parameters.
+    /// It sets the right view of the text field to an image view with the specified image and color. If the image parameter is nil, the right view is hidden
+    func right(image: UIImage?, color: UIColor = .black) {
+        if let image = image {
+            rightViewMode = UITextField.ViewMode.always
+            let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
+            imageView.contentMode = .scaleAspectFit
+            imageView.image = image
+            imageView.image = imageView.image?.withRenderingMode(.alwaysTemplate)
+            imageView.tintColor = color
+            rightView = imageView
+        } else {
+            rightViewMode = UITextField.ViewMode.never
+            rightView = nil
+        }
+    }
+    
 }

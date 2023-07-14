@@ -79,6 +79,12 @@
 		9E525CBE29CAB1AD001AC37E /* CALayer+Sequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E525CBB29CAB1AD001AC37E /* CALayer+Sequence.swift */; };
 		9E525CC029CACDB7001AC37E /* UITextView+Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E525CBF29CACDB7001AC37E /* UITextView+Delegate.swift */; };
 		9E525CC229CAD023001AC37E /* UIView+Loading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E525CC129CAD023001AC37E /* UIView+Loading.swift */; };
+		9E595DD82A613C3B00FE0BE7 /* UIAlertController++.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E595DD72A613C3B00FE0BE7 /* UIAlertController++.swift */; };
+		9E595DDD2A613D6300FE0BE7 /* UIAlertController+Picker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E595DDC2A613D6300FE0BE7 /* UIAlertController+Picker.swift */; };
+		9E595DDF2A613DEC00FE0BE7 /* UIAlertController+DatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E595DDE2A613DEC00FE0BE7 /* UIAlertController+DatePicker.swift */; };
+		9E595DE12A6140D900FE0BE7 /* ThenTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E595DE02A6140D900FE0BE7 /* ThenTextField.swift */; };
+		9E595DE32A61413800FE0BE7 /* UIAlertController+Input.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E595DE22A61413800FE0BE7 /* UIAlertController+Input.swift */; };
+		9E595DE52A61413E00FE0BE7 /* UIAlertController+Inputs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E595DE42A61413E00FE0BE7 /* UIAlertController+Inputs.swift */; };
 		9EA1FD3C2A14FEB00088DD2A /* ThenWaveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EA1FD3B2A14FEB00088DD2A /* ThenWaveView.swift */; };
 /* End PBXBuildFile section */
 
@@ -157,6 +163,12 @@
 		9E525CBB29CAB1AD001AC37E /* CALayer+Sequence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CALayer+Sequence.swift"; sourceTree = "<group>"; };
 		9E525CBF29CACDB7001AC37E /* UITextView+Delegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextView+Delegate.swift"; sourceTree = "<group>"; };
 		9E525CC129CAD023001AC37E /* UIView+Loading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Loading.swift"; sourceTree = "<group>"; };
+		9E595DD72A613C3B00FE0BE7 /* UIAlertController++.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController++.swift"; sourceTree = "<group>"; };
+		9E595DDC2A613D6300FE0BE7 /* UIAlertController+Picker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Picker.swift"; sourceTree = "<group>"; };
+		9E595DDE2A613DEC00FE0BE7 /* UIAlertController+DatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+DatePicker.swift"; sourceTree = "<group>"; };
+		9E595DE02A6140D900FE0BE7 /* ThenTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThenTextField.swift; sourceTree = "<group>"; };
+		9E595DE22A61413800FE0BE7 /* UIAlertController+Input.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Input.swift"; sourceTree = "<group>"; };
+		9E595DE42A61413E00FE0BE7 /* UIAlertController+Inputs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Inputs.swift"; sourceTree = "<group>"; };
 		9EA1FD3B2A14FEB00088DD2A /* ThenWaveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThenWaveView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -231,6 +243,7 @@
 		9E525C1F29CAACB1001AC37E /* Manager */ = {
 			isa = PBXGroup;
 			children = (
+				9E595DD92A613CC300FE0BE7 /* Alert */,
 				9E525C2029CAACB1001AC37E /* Album */,
 			);
 			path = Manager;
@@ -297,6 +310,11 @@
 				9E525C3629CAACB1001AC37E /* UITableView++.swift */,
 				9E525C3429CAACB1001AC37E /* UIScrollView++.swift */,
 				9E525C3029CAACB1001AC37E /* UICollectionView++.swift */,
+				9E595DD72A613C3B00FE0BE7 /* UIAlertController++.swift */,
+				9E595DE22A61413800FE0BE7 /* UIAlertController+Input.swift */,
+				9E595DE42A61413E00FE0BE7 /* UIAlertController+Inputs.swift */,
+				9E595DDC2A613D6300FE0BE7 /* UIAlertController+Picker.swift */,
+				9E595DDE2A613DEC00FE0BE7 /* UIAlertController+DatePicker.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -477,6 +495,14 @@
 			path = Others;
 			sourceTree = "<group>";
 		};
+		9E595DD92A613CC300FE0BE7 /* Alert */ = {
+			isa = PBXGroup;
+			children = (
+				9E595DE02A6140D900FE0BE7 /* ThenTextField.swift */,
+			);
+			path = Alert;
+			sourceTree = "<group>";
+		};
 		9EA1FD3A2A14FEA40088DD2A /* Wave */ = {
 			isa = PBXGroup;
 			children = (
@@ -577,6 +603,7 @@
 				9E525C9C29CAACB1001AC37E /* ThenPlaceHolderTextView.swift in Sources */,
 				9E525C8529CAACB1001AC37E /* UIImageView++.swift in Sources */,
 				9E525C7829CAACB1001AC37E /* UIGestureRecognizer++.swift in Sources */,
+				9E595DE12A6140D900FE0BE7 /* ThenTextField.swift in Sources */,
 				9E525C9B29CAACB1001AC37E /* ThenMatureTextView.swift in Sources */,
 				9E525CAE29CAACB1001AC37E /* AnimationSequence.swift in Sources */,
 				9E525C7F29CAACB1001AC37E /* UITextView++.swift in Sources */,
@@ -589,10 +616,12 @@
 				9E525CA629CAACB1001AC37E /* ThenSegmentControl.swift in Sources */,
 				9E525CB829CAB123001AC37E /* UIView+Badge.swift in Sources */,
 				9E525C8829CAACB1001AC37E /* UIView+Draw.swift in Sources */,
+				9E595DE32A61413800FE0BE7 /* UIAlertController+Input.swift in Sources */,
 				9E525CC029CACDB7001AC37E /* UITextView+Delegate.swift in Sources */,
 				9E525CA429CAACB1001AC37E /* ThenMonitorWIndow.swift in Sources */,
 				9E525C8C29CAACB1001AC37E /* UIView+ViewController.swift in Sources */,
 				9E525CBE29CAB1AD001AC37E /* CALayer+Sequence.swift in Sources */,
+				9E595DE52A61413E00FE0BE7 /* UIAlertController+Inputs.swift in Sources */,
 				9E525C7929CAACB1001AC37E /* UITapGestureRecognizer++.swift in Sources */,
 				9E525C9129CAACB1001AC37E /* UIEdgeInsets++.swift in Sources */,
 				9E525C7E29CAACB1001AC37E /* UICollectionView++.swift in Sources */,
@@ -609,6 +638,7 @@
 				9E525C9A29CAACB1001AC37E /* ThenColorButton.swift in Sources */,
 				9E525C8729CAACB1001AC37E /* UITextField++.swift in Sources */,
 				9E525C9829CAACB1001AC37E /* String+CICode.swift in Sources */,
+				9E595DD82A613C3B00FE0BE7 /* UIAlertController++.swift in Sources */,
 				9E525CAD29CAACB1001AC37E /* ThenQRScanner.swift in Sources */,
 				9E525C7A29CAACB1001AC37E /* UIVIew+Color.swift in Sources */,
 				9E525C9729CAACB1001AC37E /* CALayer+Gradient.swift in Sources */,
@@ -616,7 +646,9 @@
 				9E525C8029CAACB1001AC37E /* UIButton+Shadow.swift in Sources */,
 				9E525CA329CAACB1001AC37E /* ThenInputLineView.swift in Sources */,
 				9E525CA529CAACB1001AC37E /* ThenActivityIndicatorView.swift in Sources */,
+				9E595DDF2A613DEC00FE0BE7 /* UIAlertController+DatePicker.swift in Sources */,
 				9EA1FD3C2A14FEB00088DD2A /* ThenWaveView.swift in Sources */,
+				9E595DDD2A613D6300FE0BE7 /* UIAlertController+Picker.swift in Sources */,
 				9E525C7229CAACB1001AC37E /* ThenAlbumPicker.swift in Sources */,
 				9E525CAF29CAACB1001AC37E /* AnimationGroup.swift in Sources */,
 				9E525C9E29CAACB1001AC37E /* ThenInputSecrectImageView.swift in Sources */,
