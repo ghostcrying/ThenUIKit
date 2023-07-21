@@ -10,14 +10,17 @@ import ThenFoundation
 
 public extension ThenExtension where T: CALayer {
     
-    func popup(_ duration: TimeInterval) {
-        let animate = CAKeyframeAnimation(keyPath: "transform")
-        animate.values = [CATransform3DMakeScale(0.5, 0.5, 0.5),
-                          CATransform3DMakeScale(1.1, 1.1, 1.0),
-                          CATransform3DMakeScale(1.0, 1.0, 1.0)]
-        animate.duration = duration
-        
-        value.add(animate, forKey: "popup")
+    @discardableResult
+    func popup(_ duration: TimeInterval) -> ThenExtension {
+        let animation = CAKeyframeAnimation(keyPath: "transform")
+        animation.values = [
+            CATransform3DMakeScale(0.5, 0.5, 0.5),
+            CATransform3DMakeScale(1.1, 1.1, 1.0),
+            CATransform3DMakeScale(1.0, 1.0, 1.0)
+        ]
+        animation.duration = duration
+        value.add(animation, forKey: "popup")
+        return self
     }
 }
 

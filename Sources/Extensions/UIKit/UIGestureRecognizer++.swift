@@ -10,6 +10,7 @@ import ThenFoundation
 
 public extension ThenExtension where T: UIGestureRecognizer {
     
+    @inlinable
     @discardableResult
     static func gesture(_ closure: @escaping (UIGestureRecognizer) -> Void) -> ThenExtension {
         return T().then.on(closure)

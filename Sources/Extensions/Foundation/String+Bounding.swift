@@ -11,6 +11,7 @@ import CoreGraphics.CGGeometry
 
 public extension ThenExtension where T == String {
     
+    @inlinable
     func boundingHeight(width: CGFloat, font: UIFont) -> CGFloat {
         let constraintRect = CGSize(width: width,
                                     height: .greatestFiniteMagnitude)
@@ -22,6 +23,7 @@ public extension ThenExtension where T == String {
         return boundingBox.height.then.ceil
     }
     
+    @inlinable
     func boundingWidth(width: CGFloat, font: UIFont) -> CGFloat {
         let constraintRect = CGSize(width: width,
                                     height: .greatestFiniteMagnitude)
@@ -33,6 +35,7 @@ public extension ThenExtension where T == String {
         return boundingBox.width.then.ceil
     }
     
+    @inlinable
     func boundingWidth(height: CGFloat, font: UIFont) -> CGFloat {
         let constraintRect = CGSize(width: .greatestFiniteMagnitude,
                                     height: height)
@@ -43,6 +46,7 @@ public extension ThenExtension where T == String {
         return boundingBox.width.then.ceil
     }
     
+    @inlinable
     func boundingSize(width: CGFloat, font: UIFont) -> CGSize {
         let constraintRect = CGSize(width: width,
                                     height: .greatestFiniteMagnitude)

@@ -130,11 +130,21 @@ public extension ThenExtension where T: UIView {
 
 public extension ThenExtension where T: UIView {
     
-    func layout(_ closure: (_ maker: ThenViewLayoutMaker) -> ()) {
+    @discardableResult
+    func layout(_ closure: (_ maker: ThenViewLayoutMaker) -> ()) -> ThenExtension {
         let m = ThenViewLayoutMaker(rect: value.frame)
         closure(m)
         value.frame = m.frame
+        return self
     }
+    
+    @discardableResult
+    func layer(_ handler: @escaping (inout CALayer) -> ()) -> ThenExtension {
+        var object = value.layer
+        handler(&object)
+        return self
+    }
+    
 }
 
 public class ThenViewLayoutMaker {

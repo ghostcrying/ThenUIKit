@@ -10,6 +10,7 @@ import ThenFoundation
 
 public extension ThenExtension where T: UIColor {
     
+    @inlinable
     static func hex(_ value: Int, alpha: CGFloat = 1) -> UIColor {
         return UIColor(hex: value, alpha: alpha)
     }

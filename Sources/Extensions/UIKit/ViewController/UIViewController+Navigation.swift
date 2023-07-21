@@ -92,7 +92,9 @@ extension UIViewController {
 public extension UIViewController {
     /// 导航栏背景颜色
     var navigationbBarBackgroundColor: UIColor? {
-        get { return navigationController?.navigationBar.barTintColor }
+        get {
+            return navigationController?.navigationBar.barTintColor
+        }
         set {
             guard let controller = (self as? UINavigationController) ?? navigationController else { return }
             if #available(iOS 13.0, *) {

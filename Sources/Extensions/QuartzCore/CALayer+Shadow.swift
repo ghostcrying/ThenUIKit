@@ -12,13 +12,13 @@ public extension ThenExtension where T: CALayer {
     
     @discardableResult
     func shadowApply(color: UIColor = .black,
-                       opacity: Float = 0.5,
-                       offset: CGSize = .zero,
-                       radius: CGFloat = 5,
-                       maskToBounds: Bool = false,
-                       shouldRasterize: Bool = true,
-                       rasterizationScale: CGFloat = UIScreen.main.scale,
-                       shadowPath: CGPath? = nil) -> ThenExtension {
+                     opacity: Float = 0.5,
+                     offset: CGSize = .zero,
+                     radius: CGFloat = 5,
+                     maskToBounds: Bool = false,
+                     shouldRasterize: Bool = true,
+                     rasterizationScale: CGFloat = UIScreen.main.scale,
+                     shadowPath: CGPath? = nil) -> ThenExtension {
         
         value.shadowColor     = color.cgColor
         value.shadowOpacity   = opacity

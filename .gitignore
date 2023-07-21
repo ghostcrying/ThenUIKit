@@ -84,10 +84,10 @@ fastlane/Preview.html
 fastlane/screenshots/**/*.png
 fastlane/test_output
 
-# ThenUIKitDemo
-ThenUIKitDemo/Pods/
-ThenUIKitDemo/xcuserdata/
-ThenUIKitDemo/*.xcworkspace
+# Example
+Example/Pods/
+Example/xcuserdata/
+Example/*.xcworkspace
 
 # Code Injection
 #

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import ThenFoundation
 
 @IBDesignable
 public class ThenColorButton: UIButton {
@@ -109,5 +110,32 @@ public extension ThenColorButton {
             return
         }
         layer.borderColor = (borderStateColors[UIControl.State.normal.rawValue] ?? .clear).cgColor
+    }
+}
+
+public extension ThenExtension where T: ThenColorButton {
+    
+    @discardableResult
+    func setBackgroundColor(_ color: UIColor?, for state: UIControl.State) -> ThenExtension {
+        value.setBackgroundColor(color, for: state)
+        return self
+    }
+    
+    @discardableResult
+    func setBackgroundColor(_ color: UIColor?, for states: [UIControl.State]) -> ThenExtension {
+        value.setBackgroundColor(color, for: states)
+        return self
+    }
+    
+    @discardableResult
+    func setBorderColor(_ color: UIColor?, for state: UIControl.State) -> ThenExtension {
+        value.setBorderColor(color, for: state)
+        return self
+    }
+    
+    @discardableResult
+    func setBorderColor(_ color: UIColor?, for states: [UIControl.State]) -> ThenExtension {
+        value.setBorderColor(color, for: states)
+        return self
     }
 }

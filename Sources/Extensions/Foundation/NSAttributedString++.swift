@@ -8,14 +8,14 @@
 import UIKit
 import ThenFoundation
 
-extension NSAttributedString {
+public extension NSAttributedString {
     
-    public convenience init(string: String,
-                            bgColorHex: Int? = nil,
-                            fgColorHex: Int? = nil,
-                            fontSize: CGFloat? = nil,
-                            lineSpacing: CGFloat? = nil,
-                            alignment: NSTextAlignment? = nil) {
+    convenience init(string: String,
+                     bgColorHex: Int? = nil,
+                     fgColorHex: Int? = nil,
+                     fontSize: CGFloat? = nil,
+                     lineSpacing: CGFloat? = nil,
+                     alignment: NSTextAlignment? = nil) {
         var attributes: [NSAttributedString.Key:Any] = [:]
         if let bgc = bgColorHex {
             attributes[.backgroundColor] = UIColor(hex: bgc)
@@ -33,11 +33,11 @@ extension NSAttributedString {
         self.init(string: string, attributes: attributes)
     }
     
-    public convenience init(string: String,
-                            bgColor: UIColor? = nil,
-                            fgColor: UIColor? = nil,
-                            font: UIFont? = nil,
-                            style: NSParagraphStyle? = nil) {
+    convenience init(string: String,
+                     bgColor: UIColor? = nil,
+                     fgColor: UIColor? = nil,
+                     font: UIFont? = nil,
+                     style: NSParagraphStyle? = nil) {
         var attributes: [NSAttributedString.Key: Any] = [:]
         if let bgc = bgColor {
             attributes[.backgroundColor] = bgc
@@ -55,37 +55,39 @@ extension NSAttributedString {
     }
 }
 
-extension ThenExtension where T == NSAttributedString {
+public extension ThenExtension where T == NSAttributedString {
     
-    public func attribute(lineSpacing: CGFloat? = nil,
-                          alignment: NSTextAlignment? = nil,
-                          for range: NSRange? = nil) -> NSMutableAttributedString {
+    func attribute(lineSpacing: CGFloat? = nil, alignment: NSTextAlignment? = nil, for range: NSRange? = nil) -> NSMutableAttributedString {
         return value.attribute(lineSpacing: lineSpacing, alignment: alignment, for: range)
     }
     
-    public func attribute(textColor: UIColor, for range: NSRange? = nil) -> NSMutableAttributedString {
+    func attribute(textColor: UIColor, for range: NSRange? = nil) -> NSMutableAttributedString {
         return value.attribute(textColor: textColor, for: range)
     }
     
-    public func attribute(textFont: UIFont, for range: NSRange? = nil) -> NSMutableAttributedString {
+    func attribute(textFont: UIFont, for range: NSRange? = nil) -> NSMutableAttributedString {
         return value.attribute(textFont: textFont, for: range)
     }
 }
 
-extension ThenExtension where T == NSMutableAttributedString {
+public extension ThenExtension where T == NSMutableAttributedString {
     
-    public func update(textColor: UIColor, for range: NSRange? = nil) {
+    @discardableResult
+    func update(textColor: UIColor, for range: NSRange? = nil) -> ThenExtension {
         value.update(textColor: textColor, for: range)
+        return self
     }
     
-    public func update(textFont: UIFont, for range: NSRange? = nil) {
+    @discardableResult
+    func update(textFont: UIFont, for range: NSRange? = nil) -> ThenExtension {
         value.update(textFont: textFont, for: range)
+        return self
     }
     
-    public func update(lineSpacing: CGFloat? = nil,
-                alignment: NSTextAlignment? = nil,
-                for range: NSRange? = nil) {
+    @discardableResult
+    func update(lineSpacing: CGFloat? = nil, alignment: NSTextAlignment? = nil, for range: NSRange? = nil) -> ThenExtension {
         value.update(lineSpacing: lineSpacing, alignment: alignment, for: range)
+        return self
     }
 }
 
@@ -124,9 +126,7 @@ extension NSMutableAttributedString {
         self.addAttributes(att, range: range ?? NSRange(location: 0, length: self.length))
     }
     
-    func update(lineSpacing: CGFloat? = nil,
-                alignment: NSTextAlignment? = nil,
-                for range: NSRange? = nil) {
+    func update(lineSpacing: CGFloat? = nil, alignment: NSTextAlignment? = nil, for range: NSRange? = nil) {
         let style = NSMutableParagraphStyle(lineSpacing: lineSpacing, alignment: alignment)
         let att = [NSAttributedString.Key.paragraphStyle:style]
         addAttributes(att, range: range ?? NSRange(location: 0, length: self.length))

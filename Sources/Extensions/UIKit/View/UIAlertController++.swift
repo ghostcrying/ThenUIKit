@@ -138,6 +138,7 @@ public extension UIAlertController {
     ///   - animated: set true to animate presentation of alert controller (default is true).
     ///   - vibrate: set true to vibrate the device while presenting the alert (default is false).
     ///   - completion: an optional completion handler to be called after presenting alert controller (default is nil).
+    @inlinable
     func show(animated: Bool = true, vibrate: Bool = false, style: UIBlurEffect.Style? = nil, completion: (() -> Void)? = nil) {
         
         /// TODO: change UIBlurEffectStyle
@@ -162,6 +163,7 @@ public extension UIAlertController {
     ///   - style: action style (default is UIAlertActionStyle.default)
     ///   - isEnabled: isEnabled status for action (default is true)
     ///   - handler: optional action handler to be called when button is tapped (default is nil)
+    @inlinable
     func addAction(image: UIImage? = nil, title: String, color: UIColor? = nil, style: UIAlertAction.Style = .default, isEnabled: Bool = true, handler: ((UIAlertAction) -> Void)? = nil) {
         //let isPad: Bool = UIDevice.current.userInterfaceIdiom == .pad
         //let action = UIAlertAction(title: title, style: isPad && style == .cancel ? .default : style, handler: handler)
@@ -187,6 +189,7 @@ public extension UIAlertController {
     ///   - title: alert title
     ///   - font: alert title font
     ///   - color: alert title color
+    @inlinable
     func set(title: String?, font: UIFont, color: UIColor) {
         if title != nil {
             self.title = title
@@ -194,6 +197,7 @@ public extension UIAlertController {
         setTitle(font: font, color: color)
     }
     
+    @inlinable
     func setTitle(font: UIFont, color: UIColor) {
         guard let title = self.title else { return }
         let attributes: [NSAttributedString.Key: Any] = [.font: font, .foregroundColor: color]
@@ -207,6 +211,7 @@ public extension UIAlertController {
     ///   - message: alert message
     ///   - font: alert message font
     ///   - color: alert message color
+    @inlinable
     func set(message: String?, font: UIFont, color: UIColor) {
         if message != nil {
             self.message = message
@@ -214,6 +219,7 @@ public extension UIAlertController {
         setMessage(font: font, color: color)
     }
 
+    @inlinable
     func setMessage(font: UIFont, color: UIColor) {
         guard let message = self.message else { return }
         let attributes: [NSAttributedString.Key: Any] = [.font: font, .foregroundColor: color]
@@ -226,6 +232,7 @@ public extension UIAlertController {
     /// - Parameters:
     ///   - vc: ViewController
     ///   - height: height of content viewController
+    @inlinable
     func set(vc: UIViewController?, height: CGFloat? = nil) {
         guard let vc = vc else {
             return
