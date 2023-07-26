@@ -2,22 +2,16 @@
 //  BasicController.swift
 //  Example
 //
-//  Created by 陈卓 on 2023/7/21.
+//  Created by ghost on 2023/7/21.
 //
 
 import UIKit
 
 class BasicController: UIViewController {
-
-    @IBOutlet weak var tableView: UITableView!
-
-    let sources = Basic.allCases
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-    }
-
+    @IBOutlet weak var tableView: UITableView!
+    
+    let sources = Basic.allCases
 }
 
 extension BasicController: UITableViewDataSource {
@@ -38,6 +32,7 @@ extension BasicController: UITableViewDataSource {
 extension BasicController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        let vc = sources[indexPath.section].items[indexPath.row].controller
+        navigationController?.pushViewController(vc, animated: true)
     }
 }

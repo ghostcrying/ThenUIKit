@@ -70,6 +70,7 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="n3u-8J-qBe" customClass="TabBarController" customModule="Example" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="7cO-O5-0Ol">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
@@ -87,7 +88,7 @@
         <!--基础-->
         <scene sceneID="7Wt-HM-bWV">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="eys-lL-cpH" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" hidesBottomBarWhenPushed="YES" id="eys-lL-cpH" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="基础" id="nhg-xb-QZe">
                         <imageReference key="image" image="pencil.circle" catalog="system" symbolScale="default"/>
                     </tabBarItem>
@@ -162,7 +163,7 @@
         <!--Extensions-->
         <scene sceneID="lki-cJ-HlL">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="t8g-i4-Gy2" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" hidesBottomBarWhenPushed="YES" id="t8g-i4-Gy2" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Extensions" image="scribble" catalog="system" id="snY-NX-gln"/>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="mEA-68-RDw"/>
@@ -236,7 +237,7 @@
         <!--Core-->
         <scene sceneID="hcL-NQ-W1C">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="WZG-jB-Ahy" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" hidesBottomBarWhenPushed="YES" id="WZG-jB-Ahy" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Core" image="paperplane" catalog="system" id="ufH-4b-7iW"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="g93-b4-goF">
@@ -309,7 +310,7 @@
         <!--Inherit-->
         <scene sceneID="veW-Ye-EoV">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="464-Dk-mKK" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" hidesBottomBarWhenPushed="YES" id="464-Dk-mKK" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Inherit" image="figure.rower" catalog="system" id="1d5-Ue-HwY"/>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="3To-YY-LUd"/>

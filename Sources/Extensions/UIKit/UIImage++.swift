@@ -11,16 +11,69 @@ import ThenFoundation
 public extension ThenExtension where T: UIImage {
     
     /// 某个像素点的颜色值
-    func color(at point: CGPoint) -> UIColor? {
-        return color(in: CGRect(x: point.x, y: point.y, width: 1, height: 1))
+    func pixelColor(at point: CGPoint) -> UIColor? {
+        return value.pixelColor(in: CGRect(x: point.x, y: point.y, width: 1, height: 1))
     }
     
     /// 某块像素点的平均颜色值
-    func color(in rect: CGRect) -> UIColor? {
-        let bounds = CGRect(x: 0, y: 0, width: value.size.width, height: value.size.height)
+    func pixelColor(in rect: CGRect) -> UIColor? {
+        return value.pixelColor(in: rect)
+    }
+    
+    /// 图片二维码识别
+    var qrCodes: [String] { value.qrCodes }
+    
+    /// Size in bytes of UIImage
+    var bytesSize: Int {
+        return value.jpegData(compressionQuality: 1)?.count ?? 0
+    }
+    
+    /// Compressed UIImage from original UIImage.
+    ///
+    /// - Parameter quality: The quality of the resulting JPEG image, expressed as a value from 0.0 to 1.0. The value 0.0 represents the maximum compression (or lowest quality) while the value 1.0 represents the least compression (or best quality), (default is 0.5).
+    /// - Returns: optional UIImage (if applicable).
+    func compressed(quality: CGFloat = 0.5) -> UIImage? {
+        guard let data = value.jpegData(compressionQuality: quality) else { return nil }
+        return UIImage(data: data)
+    }
+}
+
+// MARK: - Color
+public extension UIImage {
+    
+    /// 图片二维码识别
+    var qrCodes: [String] {
+        guard let ciImage = CIImage(image: self) else {
+            return []
+        }
+        let context = CIContext()
+        var options: [String: Any] = [CIDetectorAccuracy: CIDetectorAccuracyHigh]
+        let qrDetector = CIDetector(ofType: CIDetectorTypeQRCode, context: context, options: options)
+        if ciImage.properties.keys.contains((kCGImagePropertyOrientation as String)){
+            options = [CIDetectorImageOrientation: ciImage.properties[(kCGImagePropertyOrientation as String)] ?? 1]
+        } else {
+            options = [CIDetectorImageOrientation: 1]
+        }
+        guard let features = qrDetector?.features(in: ciImage, options: options) else {
+            return []
+        }
+        return features.compactMap {
+            guard let text = ($0 as? CIQRCodeFeature)?.messageString else { return nil }
+            return text.isEmpty ? nil : text
+        }
+    }
+    
+    /// 是否是黑夜模式图片
+    var isDark: Bool {
+        return cgImage?.isDark ?? false
+    }
+    
+    /// 某块像素点的平均颜色值
+    func pixelColor(in rect: CGRect) -> UIColor? {
+        let bounds = CGRect(x: 0, y: 0, width: size.width, height: size.height)
         guard
             bounds.intersects(rect),
-            let cgimage = value.cgImage,
+            let cgimage = cgImage,
             let dataProvider = cgimage.dataProvider,
             let data = dataProvider.data,
             let pointer = CFDataGetBytePtr(data)
@@ -30,7 +83,7 @@ public extension ThenExtension where T: UIImage {
         
         let comptsPerPixel = cgimage.bitsPerPixel / cgimage.bitsPerComponent
         
-        let image_w = Int(value.size.width)
+        let image_w = Int(size.width)
         
         let interRect = bounds.intersection(rect)
         
@@ -64,41 +117,24 @@ public extension ThenExtension where T: UIImage {
         return UIColor(red: red, green: green, blue: blue, alpha: alpha)
     }
     
-    /// 图片二维码识别
-    var qrCodes: [String] {
+    /// 平均色值
+    var averageColor: UIColor? {
         
-        guard let ciImage = CIImage(image: value) else { return [] }
-        let context = CIContext()
-        var options: [String: Any] = [CIDetectorAccuracy: CIDetectorAccuracyHigh]
-        let qrDetector = CIDetector(ofType: CIDetectorTypeQRCode, context: context, options: options)
-        if ciImage.properties.keys.contains((kCGImagePropertyOrientation as String)){
-            options = [CIDetectorImageOrientation: ciImage.properties[(kCGImagePropertyOrientation as String)] ?? 1]
-        } else {
-            options = [CIDetectorImageOrientation: 1]
-        }
-        guard let features = qrDetector?.features(in: ciImage, options: options) else {
-            return []
-        }
-        return features.compactMap {
-            guard let text = ($0 as? CIQRCodeFeature)?.messageString else { return nil }
-            return text.isEmpty ? nil : text
-        }
+        guard let inputImage = CIImage(image: self) else { return nil }
+        let extentVector = CIVector(x: inputImage.extent.origin.x, y: inputImage.extent.origin.y, z: inputImage.extent.size.width, w: inputImage.extent.size.height)
+        
+        guard let filter = CIFilter(name: "CIAreaAverage", parameters: [kCIInputImageKey: inputImage, kCIInputExtentKey: extentVector]) else { return nil }
+        guard let outputImage = filter.outputImage else { return nil }
+        
+        var bitmap = [UInt8](repeating: 0, count: 4)
+        let context = CIContext(options: [.workingColorSpace: kCFNull as Any])
+        context.render(outputImage, toBitmap: &bitmap, rowBytes: 4, bounds: CGRect(x: 0, y: 0, width: 1, height: 1), format: .RGBA8, colorSpace: nil)
+        
+        return UIColor(red: CGFloat(bitmap[0]) / 255, green: CGFloat(bitmap[1]) / 255, blue: CGFloat(bitmap[2]) / 255, alpha: CGFloat(bitmap[3]) / 255)
     }
     
-    /// Size in bytes of UIImage
-    var bytesSize: Int {
-        return value.jpegData(compressionQuality: 1)?.count ?? 0
-    }
-    
-    /// Compressed UIImage from original UIImage.
-    ///
-    /// - Parameter quality: The quality of the resulting JPEG image, expressed as a value from 0.0 to 1.0. The value 0.0 represents the maximum compression (or lowest quality) while the value 1.0 represents the least compression (or best quality), (default is 0.5).
-    /// - Returns: optional UIImage (if applicable).
-    func compressed(quality: CGFloat = 0.5) -> UIImage? {
-        guard let data = value.jpegData(compressionQuality: quality) else { return nil }
-        return UIImage(data: data)
-    }
 }
+
 
 public extension ThenExtension where T: UIImage {
     
@@ -106,7 +142,7 @@ public extension ThenExtension where T: UIImage {
     ///
     /// - Parameter rect: CGRect to crop UIImage to.
     /// - Returns: cropped UIImage
-    func cropped(to rect: CGRect) -> UIImage {
+    func cropped(to rect: CGRect) -> UIImage? {
         return value.cropped(to: rect)
     }
     
@@ -216,13 +252,25 @@ public extension UIImage {
         
         self.init(cgImage: aCgImage)
     }
+}
+
+//MARK: - Operate To UIImage
+public extension UIImage {
     
-    
-    /// Save to album
-    func albumSave() {
-        UIImageWriteToSavedPhotosAlbum(self, nil, nil, nil)
+    /// Draw rect with color
+    func draw(in rects: [CGRect], with color: UIColor) -> UIImage? {
+        UIGraphicsBeginImageContextWithOptions(self.size, self.launchOpaque, self.scale)
+        defer { UIGraphicsEndImageContext() }
+        guard let context = UIGraphicsGetCurrentContext() else {
+            return nil
+        }
+        self.draw(in: CGRect(origin: .zero, size: self.size))
+        context.setFillColor(color.cgColor)
+        for r in rects {
+            context.fill(r)
+        }
+        return UIGraphicsGetImageFromCurrentImageContext()
     }
-    
     
     /// Circle Clip
     func circleClip() -> UIImage? {
@@ -252,14 +300,34 @@ public extension UIImage {
     ///
     /// - Parameter rect: CGRect to crop UIImage to.
     /// - Returns: cropped UIImage
-    func cropped(to rect: CGRect) -> UIImage {
-        guard rect.size.width <= size.width && rect.size.height <= size.height else {
+    func cropped(to rect: CGRect) -> UIImage? {
+        let imageRect = CGRect(origin: .zero, size: self.size)
+        if rect.contains(imageRect) { return self }
+        
+        var scaledRect = rect
+        scaledRect.origin.x    *= self.scale
+        scaledRect.origin.y    *= self.scale
+        scaledRect.size.width  *= self.scale
+        scaledRect.size.height *= self.scale
+        guard scaledRect.size.width > 0, scaledRect.size.height > 0 else {
+            return nil
+        }
+        guard let imageRef = self.cgImage?.cropping(to: scaledRect) else {
+            return nil
+        }
+        let croppedImage = UIImage(cgImage: imageRef, scale: scale, orientation: imageOrientation)
+        return croppedImage
+    }
+    
+    ///  UIImage scaled.
+    ///
+    /// - Parameter scale
+    /// - Returns: Scaled UIImage
+    func scaled(to scale: CGFloat) -> UIImage {
+        guard self.scale != scale, let cgImage = self.cgImage else {
             return self
         }
-        guard let image: CGImage = cgImage?.cropping(to: rect) else {
-            return self
-        }
-        return UIImage(cgImage: image)
+        return UIImage(cgImage: cgImage, scale: scale, orientation: self.imageOrientation)
     }
     
     ///  UIImage scaled to height with respect to aspect ratio.
@@ -278,7 +346,7 @@ public extension UIImage {
         draw(in: CGRect(x: 0, y: 0, width: newWidth, height: toHeight))
         return UIGraphicsGetImageFromCurrentImageContext()
     }
-    
+
     ///  UIImage scaled to width with respect to aspect ratio.
     ///
     /// - Parameters:
@@ -399,7 +467,14 @@ public extension UIImage {
         return UIGraphicsGetImageFromCurrentImageContext()
     }
     
+}
+
+// MARK: - Others
+public extension UIImage {
     
+    /// Save to album
+    func albumSave() { UIImageWriteToSavedPhotosAlbum(self, nil, nil, nil) }
+
     /// DeviceGray Space Image
     func deviceGray() -> UIImage? {
         let w = Int(size.width)
@@ -423,4 +498,56 @@ public extension UIImage {
         }
         return UIImage(cgImage: makeImage)
     }
+    
+    /// ll_CGRectWithContentMode:(UIViewContentMode)mode viewSize:(CGSize)viewSize clipsToBounds:(BOOL)clips
+    func rect(with mode: UIView.ContentMode, in targetSize: CGSize, clipsToBounds clips: Bool) -> CGRect {
+        let imageSize = self.size
+        var contentRect = CGRect(origin: .zero, size: targetSize)
+
+        switch mode {
+        case .scaleAspectFit, .scaleAspectFill:
+            let scale = min(targetSize.width / imageSize.width, targetSize.height / imageSize.height)
+            let width = imageSize.width * scale
+            let height = imageSize.height * scale
+            contentRect.size = CGSize(width: width, height: height)
+            switch mode {
+            case .scaleAspectFit:
+                contentRect.origin = CGPoint(x: (targetSize.width - width) / 2.0, y: (targetSize.height - height) / 2.0)
+            case .scaleAspectFill:
+                contentRect.origin = CGPoint(x: (targetSize.width - width) / 2.0, y: (targetSize.height - height) / 2.0)
+            default:
+                break
+            }
+        case .center, .top, .bottom, .left, .right, .topLeft, .topRight, .bottomLeft, .bottomRight:
+            switch mode {
+            case .center:
+                contentRect.origin = CGPoint(x: (targetSize.width - imageSize.width) / 2.0, y: (targetSize.height - imageSize.height) / 2.0)
+            case .top:
+                contentRect.origin = CGPoint(x: (targetSize.width - imageSize.width) / 2.0, y: 0)
+            case .bottom:
+                contentRect.origin = CGPoint(x: (targetSize.width - imageSize.width) / 2.0, y: targetSize.height - imageSize.height)
+            case .left:
+                contentRect.origin = CGPoint(x: 0, y: (targetSize.height - imageSize.height) / 2.0)
+            case .right:
+                contentRect.origin = CGPoint(x: targetSize.width - imageSize.width, y: (targetSize.height - imageSize.height) / 2.0)
+            case .topLeft:
+                contentRect.origin = .zero
+            case .topRight:
+                contentRect.origin = CGPoint(x: targetSize.width - imageSize.width, y: 0)
+            case .bottomLeft:
+                contentRect.origin = CGPoint(x: 0, y: targetSize.height - imageSize.height)
+            case .bottomRight:
+                contentRect.origin = CGPoint(x: targetSize.width - imageSize.width, y: targetSize.height - imageSize.height)
+            default:
+                break
+            }
+        default:
+            break
+        }
+        if clips {
+            contentRect = contentRect.intersection(CGRect(origin: .zero, size: targetSize))
+        }
+        return contentRect.integral
+    }
+
 }

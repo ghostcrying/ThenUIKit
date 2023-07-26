@@ -2,13 +2,26 @@
 //  BasicItems.swift
 //  Example
 //
-//  Created by 陈卓 on 2023/7/21.
+//  Created by ghost on 2023/7/21.
 //
 
-import Foundation
+import UIKit
 
 enum BasicItem: String {
     case base
+    case launch
+    case crop
+    
+    var controller: UIViewController {
+        switch self {
+        case .base:
+            return UIViewController()
+        case .launch:
+            return LaunchController()
+        case .crop:
+            return CropRouter.createModule()
+        }
+    }
 }
 
 enum Basic: String, CaseIterable {
@@ -17,7 +30,7 @@ enum Basic: String, CaseIterable {
     var items: [BasicItem] {
         switch self {
         case .default:
-            return [.base]
+            return [.base, .launch, .crop]
         default:
             return []
         }

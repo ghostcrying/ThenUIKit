@@ -2,7 +2,7 @@
 //  CoreController.swift
 //  Example
 //
-//  Created by 陈卓 on 2023/7/21.
+//  Created by ghost on 2023/7/21.
 //
 
 import UIKit

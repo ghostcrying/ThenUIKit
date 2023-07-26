@@ -24,3 +24,14 @@ public extension ThenExtension where T: ViewableType {
     }
 }
 
+public extension UIView {
+    
+    func snapShot(opaque: Bool = true, scale: CGFloat = 0, afterScreenUpdates: Bool = true) -> UIImage? {
+        UIGraphicsBeginImageContextWithOptions(bounds.size, opaque, scale)
+        defer { UIGraphicsEndImageContext() }
+        drawHierarchy(in: bounds, afterScreenUpdates: afterScreenUpdates)
+        return UIGraphicsGetImageFromCurrentImageContext()
+    }
+    
+}
+

@@ -2,7 +2,7 @@
 //  CollectionController.swift
 //  Example
 //
-//  Created by 陈卓 on 2023/7/21.
+//  Created by ghost on 2023/7/21.
 //
 
 import UIKit
@@ -129,7 +129,7 @@ extension CollectionController: ThenSectionDecorationDelegate {
         .init(top: 5, left: 5, bottom: 5, right: 5)
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: ThenSectionDecorationFlowLayout, decorationTypeForSectionAt section: Int) -> ThenUIKit.ThenSectionDecorationType {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: ThenSectionDecorationFlowLayout, decorationTypeForSectionAt section: Int) -> ThenSectionDecorationType {
         return .default
     }
     
