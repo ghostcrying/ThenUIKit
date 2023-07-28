@@ -64,3 +64,35 @@ public extension ThenExtension where T: UICollectionView {
         return value.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: String(describing: type), for: indexPath) as! CellType
     }
 }
+
+public extension ThenExtension where T: UICollectionView {
+    /// VisibleCells in the order they are displayed on screen.
+    var orderedVisibleCells: [UICollectionViewCell] {
+        return value.orderedVisibleCells
+    }
+
+    /// Gets the currently visibleCells of a section.
+    ///
+    /// - Parameter section: The section to filter the cells.
+    /// - Returns: Array of visible UICollectionViewCells in the argument section.
+    func visibleCells(in section: Int) -> [UICollectionViewCell] {
+        return value.visibleCells(in: section)
+    }
+}
+    
+public extension UICollectionView {
+
+    /// VisibleCells in the order they are displayed on screen.
+    var orderedVisibleCells: [UICollectionViewCell] {
+        return indexPathsForVisibleItems.sorted().compactMap { cellForItem(at: $0) }
+    }
+
+    /// Gets the currently visibleCells of a section.
+    ///
+    /// - Parameter section: The section to filter the cells.
+    /// - Returns: Array of visible UICollectionViewCells in the argument section.
+    func visibleCells(in section: Int) -> [UICollectionViewCell] {
+        return visibleCells.filter { indexPath(for: $0)?.section == section }
+    }
+}
+

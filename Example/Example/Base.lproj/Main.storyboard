@@ -298,7 +298,13 @@
                             <constraint firstItem="3ZZ-Oa-OPC" firstAttribute="top" secondItem="qkd-Ch-dVS" secondAttribute="top" id="zqo-ZV-MLe"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Inherit" id="tmR-pl-SgK"/>
+                    <navigationItem key="navigationItem" title="Inherit" id="tmR-pl-SgK">
+                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="dJj-ti-ORG">
+                            <connections>
+                                <action selector="animate:" destination="7hR-9E-GUl" id="Ddh-tR-9f1"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="3ZZ-Oa-OPC" id="c83-fg-Tu4"/>
                     </connections>

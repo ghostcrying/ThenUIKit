@@ -1,4 +1,5 @@
 import UIKit
+import ThenUIKit
 
 class InheritController: UIViewController {
 
@@ -8,9 +9,12 @@ class InheritController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
     }
 
+    @IBAction func animate(_ sender: Any) {
+        (self.tableView.visibleCells as [UIView]).animate(animations: [ThenAnimation.identity])
+    }
+    
 }
 
 extension InheritController: UITableViewDataSource {

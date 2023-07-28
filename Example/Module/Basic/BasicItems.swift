@@ -9,15 +9,12 @@ import UIKit
 
 enum BasicItem: String {
     case base
-    case launch
     case crop
     
     var controller: UIViewController {
         switch self {
         case .base:
             return UIViewController()
-        case .launch:
-            return LaunchController()
         case .crop:
             return CropRouter.createModule()
         }
@@ -30,7 +27,7 @@ enum Basic: String, CaseIterable {
     var items: [BasicItem] {
         switch self {
         case .default:
-            return [.base, .launch, .crop]
+            return [.base, .crop]
         default:
             return []
         }

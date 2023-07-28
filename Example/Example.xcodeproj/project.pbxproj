@@ -24,7 +24,6 @@
 		9E7BEE422A6A294600FFF8E0 /* CoreItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E7BEE412A6A294600FFF8E0 /* CoreItems.swift */; };
 		9E7BEE4A2A6A60FF00FFF8E0 /* CollectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E7BEE492A6A60FF00FFF8E0 /* CollectionController.swift */; };
 		9E7BEE542A6A70DE00FFF8E0 /* CollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E7BEE532A6A70DE00FFF8E0 /* CollectionCell.swift */; };
-		9E9F11012A70EBD300E5F776 /* LaunchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E9F11002A70EBD300E5F776 /* LaunchController.swift */; };
 		9E9F11092A70F26C00E5F776 /* ThenFoundation.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E9F11022A70F1F300E5F776 /* ThenFoundation.xcframework */; };
 		9E9F110A2A70F26C00E5F776 /* ThenFoundation.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9E9F11022A70F1F300E5F776 /* ThenFoundation.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		9E9F110E2A7109E100E5F776 /* ThenUIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E7BEE242A6A1CCF00FFF8E0 /* ThenUIKit.framework */; };
@@ -80,7 +79,6 @@
 		9E7BEE412A6A294600FFF8E0 /* CoreItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreItems.swift; sourceTree = "<group>"; };
 		9E7BEE492A6A60FF00FFF8E0 /* CollectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionController.swift; sourceTree = "<group>"; };
 		9E7BEE532A6A70DE00FFF8E0 /* CollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionCell.swift; sourceTree = "<group>"; };
-		9E9F11002A70EBD300E5F776 /* LaunchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchController.swift; sourceTree = "<group>"; };
 		9E9F11022A70F1F300E5F776 /* ThenFoundation.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = ThenFoundation.xcframework; path = ../Carthage/Build/ThenFoundation.xcframework; sourceTree = "<group>"; };
 		9E9F111B2A710B4800E5F776 /* CropViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CropViewController.xib; sourceTree = "<group>"; };
 		9E9F111C2A710B4800E5F776 /* CropViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CropViewController.swift; sourceTree = "<group>"; };
@@ -100,6 +98,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9E0DC7872A73AEDD007D2CDB /* Animate */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Animate;
+			sourceTree = "<group>";
+		};
 		9E7BEDFF2A6A1C0E00FFF8E0 = {
 			isa = PBXGroup;
 			children = (
@@ -175,8 +180,8 @@
 			children = (
 				9E7BEE3D2A6A28DC00FFF8E0 /* BasicItems.swift */,
 				9E7BEE302A6A204700FFF8E0 /* BasicController.swift */,
+				9E0DC7872A73AEDD007D2CDB /* Animate */,
 				9E9F11152A710B4800E5F776 /* Crop */,
-				9E9F10FF2A70EBC700E5F776 /* Launch */,
 			);
 			path = Basic;
 			sourceTree = "<group>";
@@ -231,14 +236,6 @@
 			children = (
 			);
 			path = Guide;
-			sourceTree = "<group>";
-		};
-		9E9F10FF2A70EBC700E5F776 /* Launch */ = {
-			isa = PBXGroup;
-			children = (
-				9E9F11002A70EBD300E5F776 /* LaunchController.swift */,
-			);
-			path = Launch;
 			sourceTree = "<group>";
 		};
 		9E9F11152A710B4800E5F776 /* Crop */ = {
@@ -349,7 +346,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				9E9F11292A710B4800E5F776 /* CropRouter.swift in Sources */,
-				9E9F11012A70EBD300E5F776 /* LaunchController.swift in Sources */,
 				9E7BEE2F2A6A1FF100FFF8E0 /* InheritController.swift in Sources */,
 				9E7BEE422A6A294600FFF8E0 /* CoreItems.swift in Sources */,
 				9E7BEE292A6A1F9D00FFF8E0 /* TabBarController.swift in Sources */,

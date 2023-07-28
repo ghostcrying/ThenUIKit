@@ -24,23 +24,34 @@ public extension ThenExtension where T: UITableView {
     }
     
     @discardableResult
-    func separatorInset(_ closure: (inout UIEdgeInsets) -> Void) -> ThenExtension {
+    func separatorInset(_ closure: (inout UIEdgeInsets) -> ()) -> ThenExtension {
         var inset = value.separatorInset
         closure(&inset)
         value.separatorInset = inset
         return self
     }
     
-    func selectRow(at indexPath: IndexPath?, animated: Bool, scrollPosition: UITableView.ScrollPosition) {
-        guard let paths = value.indexPathsForVisibleRows, let path = indexPath, paths.contains(path) else { return }
+    @discardableResult
+    func selectRow(at indexPath: IndexPath?, animated: Bool, scrollPosition: UITableView.ScrollPosition) -> ThenExtension {
+        guard let paths = value.indexPathsForVisibleRows, let path = indexPath, paths.contains(path) else {
+            return self
+        }
         value.selectRow(at: path, animated: animated, scrollPosition: scrollPosition)
+        return self
     }
     
-    func deselectRow(at indexPath: IndexPath, animated: Bool) {
-        guard let paths = value.indexPathsForVisibleRows, paths.contains(indexPath) else { return }
+    @discardableResult
+    func deselectRow(at indexPath: IndexPath, animated: Bool) -> ThenExtension {
+        guard let paths = value.indexPathsForVisibleRows, paths.contains(indexPath) else {
+            return self
+        }
         value.deselectRow(at: indexPath, animated: animated)
+        return self
     }
     
+    func visibleCells(in section: Int) -> [UITableViewCell] {
+        return value.visibleCells(in: section)
+    }
 }
 
 public extension ThenExtension where T: UITableView {
@@ -84,5 +95,17 @@ public extension ThenExtension where T: UITableView {
     func dequeueHeaderFooterView<CellType: UITableViewHeaderFooterView>(_ headerFooterView: CellType.Type) -> CellType {
         return value.dequeueReusableHeaderFooterView(withIdentifier: String(describing: headerFooterView)) as! CellType
     }
+    
 }
 
+// MARK: - Cells
+public extension UITableView {
+
+    /// Gets the currently visibleCells of a section.
+    ///
+    /// - Parameter section: The section to filter the cells.
+    /// - Returns: Array of visible UITableViewCell in the argument section.
+    func visibleCells(in section: Int) -> [UITableViewCell] {
+        return visibleCells.filter { indexPath(for: $0)?.section == section }
+    }
+}

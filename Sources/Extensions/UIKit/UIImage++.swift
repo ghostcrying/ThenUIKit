@@ -257,6 +257,18 @@ public extension UIImage {
 //MARK: - Operate To UIImage
 public extension UIImage {
     
+    private var launchOpaque: Bool {
+        guard let info = self.cgImage?.alphaInfo else {
+            return false
+        }
+        switch info {
+        case .noneSkipLast, .noneSkipFirst, .none:
+            return true
+        default:
+            return false
+        }
+    }
+    
     /// Draw rect with color
     func draw(in rects: [CGRect], with color: UIColor) -> UIImage? {
         UIGraphicsBeginImageContextWithOptions(self.size, self.launchOpaque, self.scale)

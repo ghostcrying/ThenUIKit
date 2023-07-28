@@ -7,8 +7,8 @@
 
 import UIKit
 
-fileprivate var KUIViewStaticsPointKey  = "com.then.statistis.point.key"
-fileprivate var KUIViewStaticsParamKey  = "com.then.statistis.param.key"
+fileprivate var KUIViewStaticsPointKey  = "com.then.uikit.statistis.point.key"
+fileprivate var KUIViewStaticsParamKey  = "com.then.uikit.statistis.param.key"
 
 public extension ViewableType {
     /// 统计节点
