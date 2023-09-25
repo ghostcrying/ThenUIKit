@@ -10,6 +10,7 @@
 		9E0DC7822A73A42E007D2CDB /* UIVIew+Animate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E0DC7812A73A42E007D2CDB /* UIVIew+Animate.swift */; };
 		9E0DC7842A73A56E007D2CDB /* ThenAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E0DC7832A73A56E007D2CDB /* ThenAnimation.swift */; };
 		9E0DC7862A73A581007D2CDB /* ThenDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E0DC7852A73A581007D2CDB /* ThenDirection.swift */; };
+		9E32BA022AC15E5C00E0551D /* ThenFoundation.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E32BA012AC15E5C00E0551D /* ThenFoundation.xcframework */; };
 		9E3EE84429D57E5100415CA4 /* Symbols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E3EE84329D57E5100415CA4 /* Symbols.swift */; };
 		9E48C8A12A493589005C260D /* UINavigationController++.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E48C8A02A493589005C260D /* UINavigationController++.swift */; };
 		9E4DB85E2A7CAB0100D8E6F2 /* ThenFoldAnimateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E4DB85D2A7CAB0100D8E6F2 /* ThenFoldAnimateView.swift */; };
@@ -75,7 +76,6 @@
 		9E525CAD29CAACB1001AC37E /* ThenQRScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E525C6C29CAACB1001AC37E /* ThenQRScanner.swift */; };
 		9E525CAE29CAACB1001AC37E /* AnimationSequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E525C6E29CAACB1001AC37E /* AnimationSequence.swift */; };
 		9E525CAF29CAACB1001AC37E /* AnimationGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E525C6F29CAACB1001AC37E /* AnimationGroup.swift */; };
-		9E525CB229CAAE19001AC37E /* ThenFoundation.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E525CB129CAAE19001AC37E /* ThenFoundation.xcframework */; };
 		9E525CB829CAB123001AC37E /* UIView+Badge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E525CB729CAB123001AC37E /* UIView+Badge.swift */; };
 		9E525CBC29CAB1AD001AC37E /* CALayer+Border.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E525CB929CAB1AD001AC37E /* CALayer+Border.swift */; };
 		9E525CBD29CAB1AD001AC37E /* CALayer+Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E525CBA29CAB1AD001AC37E /* CALayer+Group.swift */; };
@@ -107,6 +107,7 @@
 		9E32B9FE2AC1566E00E0551D /* Cartfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Cartfile; sourceTree = "<group>"; };
 		9E32B9FF2AC1566E00E0551D /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 		9E32BA002AC1566E00E0551D /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		9E32BA012AC15E5C00E0551D /* ThenFoundation.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = ThenFoundation.xcframework; path = Carthage/Build/ThenFoundation.xcframework; sourceTree = "<group>"; };
 		9E3EE84329D57E5100415CA4 /* Symbols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Symbols.swift; sourceTree = "<group>"; };
 		9E48C8A02A493589005C260D /* UINavigationController++.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController++.swift"; sourceTree = "<group>"; };
 		9E48C8A22A493878005C260D /* ThenUIKit.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = ThenUIKit.podspec; sourceTree = "<group>"; };
@@ -174,7 +175,6 @@
 		9E525C6C29CAACB1001AC37E /* ThenQRScanner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThenQRScanner.swift; sourceTree = "<group>"; };
 		9E525C6E29CAACB1001AC37E /* AnimationSequence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationSequence.swift; sourceTree = "<group>"; };
 		9E525C6F29CAACB1001AC37E /* AnimationGroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationGroup.swift; sourceTree = "<group>"; };
-		9E525CB129CAAE19001AC37E /* ThenFoundation.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = ThenFoundation.xcframework; path = Carthage/Build/ThenFoundation.xcframework; sourceTree = "<group>"; };
 		9E525CB729CAB123001AC37E /* UIView+Badge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Badge.swift"; sourceTree = "<group>"; };
 		9E525CB929CAB1AD001AC37E /* CALayer+Border.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CALayer+Border.swift"; sourceTree = "<group>"; };
 		9E525CBA29CAB1AD001AC37E /* CALayer+Group.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CALayer+Group.swift"; sourceTree = "<group>"; };
@@ -204,7 +204,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9E525CB229CAAE19001AC37E /* ThenFoundation.xcframework in Frameworks */,
+				9E32BA022AC15E5C00E0551D /* ThenFoundation.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -501,7 +501,7 @@
 		9E525CB029CAAE18001AC37E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				9E525CB129CAAE19001AC37E /* ThenFoundation.xcframework */,
+				9E32BA012AC15E5C00E0551D /* ThenFoundation.xcframework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";

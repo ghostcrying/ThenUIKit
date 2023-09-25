@@ -142,7 +142,12 @@ class RectRadarAnimationView: UIView {
                 cell.progress = 0.0
                 return cell
             }
-            return RadarCell(beginFrame: bounds.inset(by: UIEdgeInsets(maxIncrement)), expand: maxIncrement, fillColor: fillColor, beginAlpha: beginAlpha)
+            return RadarCell(
+                beginFrame: self?.bounds.inset(by: .init(self?.maxIncrement ?? 1)) ?? .zero,
+                expand: self?.maxIncrement ?? 1,
+                fillColor: self?.fillColor ?? .clear,
+                beginAlpha: self?.beginAlpha ?? 0
+            )
         }()
         addSub(radarCell)
     }
