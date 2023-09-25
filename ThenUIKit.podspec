@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'ThenUIKit'
-  s.version          = '0.0.8'
+  s.version          = '0.1.0'
   s.summary          = 'The Basic UIKit Framework'
 
 # This description is used to generate tags and improve search results.

@@ -12,6 +12,7 @@
 		9E0DC7862A73A581007D2CDB /* ThenDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E0DC7852A73A581007D2CDB /* ThenDirection.swift */; };
 		9E3EE84429D57E5100415CA4 /* Symbols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E3EE84329D57E5100415CA4 /* Symbols.swift */; };
 		9E48C8A12A493589005C260D /* UINavigationController++.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E48C8A02A493589005C260D /* UINavigationController++.swift */; };
+		9E4DB85E2A7CAB0100D8E6F2 /* ThenFoldAnimateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E4DB85D2A7CAB0100D8E6F2 /* ThenFoldAnimateView.swift */; };
 		9E525C7029CAACB1001AC37E /* Constrant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E525C1D29CAACB1001AC37E /* Constrant.swift */; };
 		9E525C7129CAACB1001AC37E /* ViewableType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E525C1E29CAACB1001AC37E /* ViewableType.swift */; };
 		9E525C7229CAACB1001AC37E /* ThenAlbumPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E525C2129CAACB1001AC37E /* ThenAlbumPicker.swift */; };
@@ -103,9 +104,13 @@
 		9E0DC7812A73A42E007D2CDB /* UIVIew+Animate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIVIew+Animate.swift"; sourceTree = "<group>"; };
 		9E0DC7832A73A56E007D2CDB /* ThenAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThenAnimation.swift; sourceTree = "<group>"; };
 		9E0DC7852A73A581007D2CDB /* ThenDirection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThenDirection.swift; sourceTree = "<group>"; };
+		9E32B9FE2AC1566E00E0551D /* Cartfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Cartfile; sourceTree = "<group>"; };
+		9E32B9FF2AC1566E00E0551D /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
+		9E32BA002AC1566E00E0551D /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		9E3EE84329D57E5100415CA4 /* Symbols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Symbols.swift; sourceTree = "<group>"; };
 		9E48C8A02A493589005C260D /* UINavigationController++.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController++.swift"; sourceTree = "<group>"; };
 		9E48C8A22A493878005C260D /* ThenUIKit.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = ThenUIKit.podspec; sourceTree = "<group>"; };
+		9E4DB85D2A7CAB0100D8E6F2 /* ThenFoldAnimateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThenFoldAnimateView.swift; sourceTree = "<group>"; };
 		9E525C0229CAAC3E001AC37E /* ThenUIKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ThenUIKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E525C1D29CAACB1001AC37E /* Constrant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constrant.swift; sourceTree = "<group>"; };
 		9E525C1E29CAACB1001AC37E /* ViewableType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewableType.swift; sourceTree = "<group>"; };
@@ -214,10 +219,21 @@
 			path = Symbols;
 			sourceTree = "<group>";
 		};
+		9E4DB85C2A7CAAEC00D8E6F2 /* Fold */ = {
+			isa = PBXGroup;
+			children = (
+				9E4DB85D2A7CAB0100D8E6F2 /* ThenFoldAnimateView.swift */,
+			);
+			path = Fold;
+			sourceTree = "<group>";
+		};
 		9E525BF829CAAC3E001AC37E = {
 			isa = PBXGroup;
 			children = (
 				9E48C8A22A493878005C260D /* ThenUIKit.podspec */,
+				9E32B9FE2AC1566E00E0551D /* Cartfile */,
+				9E32B9FF2AC1566E00E0551D /* Package.swift */,
+				9E32BA002AC1566E00E0551D /* README.md */,
 				9E525C1A29CAACB1001AC37E /* Sources */,
 				9E525C0329CAAC3E001AC37E /* Products */,
 				9E525CB029CAAE18001AC37E /* Frameworks */,
@@ -402,6 +418,7 @@
 		9E525C5029CAACB1001AC37E /* UIView */ = {
 			isa = PBXGroup;
 			children = (
+				9E4DB85C2A7CAAEC00D8E6F2 /* Fold */,
 				9E7BEDFE2A6A1AF700FFF8E0 /* Collection */,
 				9EA1FD3A2A14FEA40088DD2A /* Wave */,
 				9E525CC329CAD3AF001AC37E /* Others */,
@@ -652,6 +669,7 @@
 				9E525C7F29CAACB1001AC37E /* UITextView++.swift in Sources */,
 				9E525C8E29CAACB1001AC37E /* UIViewController+Navigation.swift in Sources */,
 				9E525C7029CAACB1001AC37E /* Constrant.swift in Sources */,
+				9E4DB85E2A7CAB0100D8E6F2 /* ThenFoldAnimateView.swift in Sources */,
 				9E525C9929CAACB1001AC37E /* ThenActionSheet.swift in Sources */,
 				9E525C8A29CAACB1001AC37E /* UIControl+Action.swift in Sources */,
 				9E525C8329CAACB1001AC37E /* UIView+Xib.swift in Sources */,

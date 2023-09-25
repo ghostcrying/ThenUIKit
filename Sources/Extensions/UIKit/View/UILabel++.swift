@@ -22,10 +22,10 @@ public extension ThenExtension where T: UILabel {
 public extension UILabel {
     
     func applyShadow(color: UIColor = UIColor(hex: 0x000000).withAlphaComponent(0.25)) {
-        
         layerShadowColor = color
         layerShadowOpacity = 1
         layerShadowOffset = CGSize(width: 1, height: 1)
     }
+    
 }
 
