@@ -15,7 +15,7 @@ open class ThenSegmentControl: UIScrollView {
     
     /// 展示可见的数量，可小数
     public var contentCount: CGFloat {
-        get { return contentCount_ }
+        get { contentCount_ }
         set { contentCount_ = newValue; setNeedsLayout() }
     }
     

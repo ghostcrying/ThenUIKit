@@ -56,7 +56,7 @@ open class ThenGuidePageView: UIView {
     
     /// 跳过按钮的标题
     open var skipTitle: String? {
-        get { return enter.title(for: .normal) }
+        get { enter.title(for: .normal) }
         set { enter.setTitle(newValue, for: .normal) }
     }
     

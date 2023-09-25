@@ -11,6 +11,7 @@
 		9E0DC7842A73A56E007D2CDB /* ThenAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E0DC7832A73A56E007D2CDB /* ThenAnimation.swift */; };
 		9E0DC7862A73A581007D2CDB /* ThenDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E0DC7852A73A581007D2CDB /* ThenDirection.swift */; };
 		9E32BA022AC15E5C00E0551D /* ThenFoundation.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E32BA012AC15E5C00E0551D /* ThenFoundation.xcframework */; };
+		9E32BA092AC16C9500E0551D /* UniqueAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E32BA082AC16C9500E0551D /* UniqueAddress.swift */; };
 		9E3EE84429D57E5100415CA4 /* Symbols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E3EE84329D57E5100415CA4 /* Symbols.swift */; };
 		9E48C8A12A493589005C260D /* UINavigationController++.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E48C8A02A493589005C260D /* UINavigationController++.swift */; };
 		9E4DB85E2A7CAB0100D8E6F2 /* ThenFoldAnimateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E4DB85D2A7CAB0100D8E6F2 /* ThenFoldAnimateView.swift */; };
@@ -108,6 +109,7 @@
 		9E32B9FF2AC1566E00E0551D /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 		9E32BA002AC1566E00E0551D /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		9E32BA012AC15E5C00E0551D /* ThenFoundation.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = ThenFoundation.xcframework; path = Carthage/Build/ThenFoundation.xcframework; sourceTree = "<group>"; };
+		9E32BA082AC16C9500E0551D /* UniqueAddress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UniqueAddress.swift; sourceTree = "<group>"; };
 		9E3EE84329D57E5100415CA4 /* Symbols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Symbols.swift; sourceTree = "<group>"; };
 		9E48C8A02A493589005C260D /* UINavigationController++.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController++.swift"; sourceTree = "<group>"; };
 		9E48C8A22A493878005C260D /* ThenUIKit.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = ThenUIKit.podspec; sourceTree = "<group>"; };
@@ -273,6 +275,7 @@
 			isa = PBXGroup;
 			children = (
 				9E525C1D29CAACB1001AC37E /* Constrant.swift */,
+				9E32BA082AC16C9500E0551D /* UniqueAddress.swift */,
 				9E0DC7852A73A581007D2CDB /* ThenDirection.swift */,
 				9E0DC7832A73A56E007D2CDB /* ThenAnimation.swift */,
 				9E3EE84529D57F4400415CA4 /* Symbols */,
@@ -694,6 +697,7 @@
 				9E525C9529CAACB1001AC37E /* CALayer+Shadow.swift in Sources */,
 				9E525C7529CAACB1001AC37E /* UIImage++.swift in Sources */,
 				9E525C8629CAACB1001AC37E /* UIView++.swift in Sources */,
+				9E32BA092AC16C9500E0551D /* UniqueAddress.swift in Sources */,
 				9E525CAB29CAACB1001AC37E /* ThenProgressHUD.swift in Sources */,
 				9E525C9429CAACB1001AC37E /* String+Bounding.swift in Sources */,
 				9E0DC7842A73A56E007D2CDB /* ThenAnimation.swift in Sources */,

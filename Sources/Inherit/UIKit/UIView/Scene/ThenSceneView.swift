@@ -69,7 +69,7 @@ public class ThenSceneView: UIView {
     }
     
     public var scene: SCNScene? {
-        get { return scnView.scene }
+        get { scnView.scene }
         set {
             cameraNode.removeFromParentNode()
             lightNode.removeFromParentNode()

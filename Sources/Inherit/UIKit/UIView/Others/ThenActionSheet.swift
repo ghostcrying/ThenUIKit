@@ -258,12 +258,12 @@ private class ThenActionSheetCell: UITableViewCell {
     }
     
     fileprivate var isTopLineHidden: Bool {
-        get { return topLine.isHidden }
+        get { topLine.isHidden }
         set { topLine.isHidden = newValue }
     }
     
     fileprivate var isBottomLineHidden: Bool {
-        get { return bottomLine.isHidden }
+        get { bottomLine.isHidden }
         set { bottomLine.isHidden = newValue }
     }
     

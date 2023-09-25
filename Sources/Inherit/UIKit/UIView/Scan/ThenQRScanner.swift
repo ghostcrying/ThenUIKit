@@ -69,12 +69,12 @@ extension QRScanner: QRScannerable {
     }
     
     public var animationView: QRScannerAnimationViewableType? {
-        get { return _animationView }
+        get { _animationView }
         set { _animationView = newValue }
     }
     
     public var isRunning: Bool {
-        get { return session.isRunning }
+        get { session.isRunning }
         set {
             if isRunning == newValue { return }
             if newValue {
@@ -86,7 +86,7 @@ extension QRScanner: QRScannerable {
     }
     
     public var isScanning: Bool {
-        get { return lock.then.lock(_isScanning) }
+        get { lock.then.lock(_isScanning) }
         set {
             if lock.then.lock(_isScanning) == newValue { return }
             lock.then.lock(_isScanning = newValue)
@@ -95,7 +95,7 @@ extension QRScanner: QRScannerable {
     }
     
     public var outputHandle: ((String) -> Void)? {
-        get { return _handle }
+        get { _handle }
         set { _handle = newValue }
     }
     
@@ -210,22 +210,22 @@ public protocol QRScannerAnimationViewableType: ViewableType {
 extension QRScannerAnimationView: QRScannerAnimationViewableType {
     
     public var focusSize: CGSize {
-        get { return _focusSize }
+        get { _focusSize }
         set { _focusSize = newValue }
     }
     
     public var focusImage: UIImage? {
-        get { return focusImageView.image }
+        get { focusImageView.image }
         set { focusImageView.image = newValue }
     }
     
     public var focusContentImage: UIImage? {
-        get { return focusContentImageView.image }
+        get { focusContentImageView.image }
         set { focusContentImageView.image = newValue }
     }
     
     public var isAnimting: Bool {
-        get { return _isAnimting }
+        get { _isAnimting }
         set { _isAnimting = newValue }
     }
 }

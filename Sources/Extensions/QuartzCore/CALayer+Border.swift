@@ -5,83 +5,81 @@
 //  Created by ghost on 2023/3/16.
 //
 
-import UIKit
-import ThenFoundation
 import ObjectiveC.runtime
+import ThenFoundation
+import UIKit
+
+private enum BorderProxyKey {
+    @UniqueAddress static var key
+}
 
 public extension ThenExtension where T: CALayer {
-    
     /// 边框 & 边角
-    var border: ThenBorderProxy { return ThenBorderProxy(self.value) }
+    var border: ThenBorderProxy { return ThenBorderProxy(value) }
 }
 
 public struct ThenBorderProxy {
-    
-    static private var key: String = "com.then.calayer.border.key"
-    
     private var base: CALayer
     fileprivate init(_ base: CALayer) {
         self.base = base
     }
-    
+
     /// 添加边框、边角
     /// 在layout方法中调用
-    public func make(_ closure: (ThenCALayerBorder) -> ()) {
-        if let currentBorder = objc_getAssociatedObject(base, &ThenBorderProxy.key) as? ThenCALayerBorder {
+    public func make(_ closure: (ThenCALayerBorder) -> Void) {
+        if let currentBorder = objc_getAssociatedObject(base, BorderProxyKey.key) as? ThenCALayerBorder {
             closure(currentBorder)
             currentBorder.setNeedsDisplay()
         } else {
             let newBorder = ThenCALayerBorder(base)
-            objc_setAssociatedObject(base, &ThenBorderProxy.key, newBorder, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+            objc_setAssociatedObject(base, BorderProxyKey.key, newBorder, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
             closure(newBorder)
             newBorder.setNeedsDisplay()
         }
     }
-    
+
     /// 清除
     public func clear() {
-        (objc_getAssociatedObject(base, &ThenBorderProxy.key) as? ThenCALayerBorder)?.clear()
-        objc_setAssociatedObject(base, &ThenBorderProxy.key, nil, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+        (objc_getAssociatedObject(base, BorderProxyKey.key) as? ThenCALayerBorder)?.clear()
+        objc_setAssociatedObject(base, BorderProxyKey.key, nil, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
     }
 }
 
 public extension UIRectCorner {
-    
-    static let none      = UIRectCorner([])
-    static let top       = UIRectCorner.topLeft.union(UIRectCorner.topRight)
-    static let left      = UIRectCorner.topLeft.union(UIRectCorner.bottomLeft)
-    static let bottom    = UIRectCorner.bottomLeft.union(UIRectCorner.bottomRight)
-    static let right     = UIRectCorner.topRight.union(UIRectCorner.bottomRight)
-    static let all       = UIRectCorner.top.union(UIRectCorner.bottom)
+    static let none = UIRectCorner([])
+    static let top = UIRectCorner.topLeft.union(UIRectCorner.topRight)
+    static let left = UIRectCorner.topLeft.union(UIRectCorner.bottomLeft)
+    static let bottom = UIRectCorner.bottomLeft.union(UIRectCorner.bottomRight)
+    static let right = UIRectCorner.topRight.union(UIRectCorner.bottomRight)
+    static let all = UIRectCorner.top.union(UIRectCorner.bottom)
     static let topLeftBottomRight = UIRectCorner.topLeft.union(UIRectCorner.bottomRight)
     static let topRightBottomLeft = UIRectCorner.topRight.union(UIRectCorner.bottomLeft)
 }
 
 /// 边框 & 边角
 public class ThenCALayerBorder: NSObject, CALayerDelegate {
-    
     public enum BorderStyle: Int, CaseIterable {
-        case top        = 1
-        case left       = 2
-        case bottom     = 3
-        case right      = 4
+        case top = 1
+        case left = 2
+        case bottom = 3
+        case right = 4
         public static let all: [BorderStyle] = [.top, .left, .bottom, .right]
     }
-    
+
     /// 边框样式
     public var style: [BorderStyle] = []
     /// 边角样式
-    public var corner: UIRectCorner = UIRectCorner(rawValue: 0)
+    public var corner: UIRectCorner = .init(rawValue: 0)
     /// 边角大小
     public var radius: CGFloat = 0
     /// 边框线宽
     public var lineWidth: CGFloat = 0
     /// 边框颜色
-    public var lineColor: UIColor = UIColor.black
-    
+    public var lineColor: UIColor = .black
+
     private weak var targetLayer: CALayer?
-    private let drawLayer: CALayer = CALayer()
-    
+    private let drawLayer: CALayer = .init()
+
     public required init(_ base: CALayer?) {
         super.init()
         targetLayer = base
@@ -89,32 +87,39 @@ public class ThenCALayerBorder: NSObject, CALayerDelegate {
         base?.addSublayer(drawLayer)
         drawLayer.delegate = self
     }
-    
+
     fileprivate func clear() {
         drawLayer.delegate = nil
         drawLayer.removeFromSuperlayer()
         maskLayer.removeFromSuperlayer()
     }
-    
+
     fileprivate func setNeedsDisplay() {
-        guard let `targetLayer` = targetLayer else { return }
+        guard let targetLayer = targetLayer else {
+            return
+        }
         drawLayer.frame = targetLayer.bounds
         drawLayer.setNeedsDisplay()
-        guard radius > 0 else { return }
+        guard radius > 0 else {
+            return
+        }
         let maskPath = UIBezierPath(roundedRect: targetLayer.bounds, byRoundingCorners: corner, cornerRadii: CGSize(width: radius, height: radius))
         maskLayer.frame = targetLayer.bounds
         maskLayer.path = maskPath.cgPath
         targetLayer.mask = maskLayer
     }
-    
+
     private lazy var maskLayer: CAShapeLayer = {
         $0.backgroundColor = UIColor.clear.cgColor
         return $0
     }(CAShapeLayer())
-    
+
     // MARK: CALayerDelegate
+
     public func draw(_ layer: CALayer, in ctx: CGContext) {
-        guard let _ = targetLayer else { return }
+        guard let _ = targetLayer else {
+            return
+        }
         let linePath = ThenCALayerBorder.borderLinePath(size: drawLayer.bounds.size, style: style, corner: corner, cornerRadii: CGSize(width: radius, height: radius))
         linePath.lineWidth = lineWidth
         if !linePath.isEmpty {
@@ -129,11 +134,12 @@ public class ThenCALayerBorder: NSObject, CALayerDelegate {
 }
 
 private extension ThenCALayerBorder {
-    
-    private class func borderLinePath(size: CGSize,
-                                      style: [BorderStyle],
-                                      corner: UIRectCorner?,
-                                      cornerRadii: CGSize) -> UIBezierPath {
+    private class func borderLinePath(
+        size: CGSize,
+        style: [BorderStyle],
+        corner: UIRectCorner?,
+        cornerRadii: CGSize
+    ) -> UIBezierPath {
         let path = UIBezierPath()
         if style.contains(.top) {
             path.move(to: .zero)
@@ -151,7 +157,7 @@ private extension ThenCALayerBorder {
             path.move(to: CGPoint(x: 0, y: size.height))
             path.addLine(to: CGPoint(x: 0, y: 0))
         }
-        guard let `corner` = corner else {
+        guard let corner = corner else {
             return path
         }
         let controlOffset: CGFloat = 1

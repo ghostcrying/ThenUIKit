@@ -10,32 +10,32 @@ import UIKit
 public extension ThenCircleProgressView {
     
     override var backgroundColor: UIColor? {
-        get { return progressLayer.circleColor }
+        get { progressLayer.circleColor }
         set { progressLayer.circleColor = newValue ?? UIColor.clear }
     }
     
     var startColor: UIColor {
-        get { return progressLayer.startColor }
+        get { progressLayer.startColor }
         set { progressLayer.startColor = newValue }
     }
     
     var endColor: UIColor {
-        get { return progressLayer.endColor }
+        get { progressLayer.endColor }
         set { progressLayer.endColor = newValue }
     }
     
     var startAngle: CGFloat {
-        get { return progressLayer.startAngle }
+        get { progressLayer.startAngle }
         set { progressLayer.startAngle = newValue }
     }
     
     var lineWidth: CGFloat {
-        get { return progressLayer.lineWidth }
+        get { progressLayer.lineWidth }
         set { progressLayer.lineWidth = newValue }
     }
     
     var progress: CGFloat {
-        get { return progressLayer.progress }
+        get { progressLayer.progress }
         set { progressLayer.progress = newValue }
     }
 }

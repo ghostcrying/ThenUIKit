@@ -5,13 +5,17 @@
 //  Created by ghost on 2023/3/16.
 //
 
-import UIKit
 import ThenFoundation
+import UIKit
 
 public extension ThenExtension where T: CALayer {
-    
     @discardableResult
-    func gradientApply(frame: CGRect, start: CGPoint, end: CGPoint, colors: [UIColor]) -> ThenExtension {
+    func gradientApply(
+        frame: CGRect,
+        start: CGPoint,
+        end: CGPoint,
+        colors: [UIColor]
+    ) -> ThenExtension {
         let gradient = value.gradientLayer ?? CAGradientLayer()
         gradient.frame = frame
         gradient.startPoint = start
@@ -23,26 +27,27 @@ public extension ThenExtension where T: CALayer {
         value.gradientLayer = gradient
         return self
     }
-    
+
     @discardableResult
     func gradientRemove() -> ThenExtension {
         value.gradientLayer?.removeFromSuperlayer()
         value.gradientLayer = nil
         return self
     }
-    
+
     var gradientLayer: CAGradientLayer? {
-        get { return value.gradientLayer }
+        get { value.gradientLayer }
         set { value.gradientLayer = newValue }
     }
-    
 }
 
-fileprivate extension CALayer {
-    
-    private static var gradientLayerBindKey: String = "com.then.layer.gradient.bind.key"
+private extension CALayer {
     var gradientLayer: CAGradientLayer? {
-        get { return then.binded(for: &CALayer.gradientLayerBindKey) }
-        set { then.bind(object: newValue, for: &CALayer.gradientLayerBindKey, .OBJC_ASSOCIATION_RETAIN_NONATOMIC) }
+        get { then.binded(for: CALayerBindKey.gradient) }
+        set { then.bind(object: newValue, for: CALayerBindKey.gradient, .OBJC_ASSOCIATION_RETAIN_NONATOMIC) }
     }
+}
+
+private enum CALayerBindKey {
+    @UniqueAddress static var gradient
 }

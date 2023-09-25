@@ -7,25 +7,27 @@
 
 import UIKit
 
-fileprivate var KUIViewStaticsPointKey  = "com.then.uikit.statistis.point.key"
-fileprivate var KUIViewStaticsParamKey  = "com.then.uikit.statistis.param.key"
+private enum StaticsPointKey {
+    @UniqueAddress static var point
+    @UniqueAddress static var param
+}
 
 public extension ViewableType {
     /// 统计节点
     var staticsPoint: String? {
-        get { return objc_getAssociatedObject(self, &KUIViewStaticsPointKey) as? String }
-        set { objc_setAssociatedObject(self, &KUIViewStaticsPointKey, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC) }
+        get { objc_getAssociatedObject(self, StaticsPointKey.point) as? String }
+        set { objc_setAssociatedObject(self, StaticsPointKey.point, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC) }
     }
+
     /// 参数
     var staticsParams: [AnyHashable: Any]? {
-        get { return objc_getAssociatedObject(self, &KUIViewStaticsParamKey) as? [AnyHashable: Any] }
-        set { objc_setAssociatedObject(self, &KUIViewStaticsParamKey, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC) }
+        get { objc_getAssociatedObject(self, StaticsPointKey.param) as? [AnyHashable: Any] }
+        set { objc_setAssociatedObject(self, StaticsPointKey.param, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC) }
     }
+
     /// 设定上报参数
     func configStatics(point: String? = nil, params: [AnyHashable: Any]? = nil) {
-        self.staticsPoint = point
-        self.staticsParams = params
+        staticsPoint = point
+        staticsParams = params
     }
-
 }
-
