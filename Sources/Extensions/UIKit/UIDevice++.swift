@@ -430,3 +430,38 @@ public extension DeviceType {
         }
     }
 }
+
+public extension DeviceType {
+    
+    // ppi
+    var ppi: Double {
+        guard DeviceIsPhone else {
+            return 0
+        }
+        switch self {
+        case .iPhone2G, .iPhone3G, .iPhone3GS:
+            return 165
+        case .iPhone4, .iPhone4S:
+            return 330
+        case .iPhone5, .iPhone5C, .iPhone5S, .iPhoneSE, .iPhone6, .iPhone6S, .iPhone7, .iPhone8, .iPhoneSE2, .iPhoneSE3, .iPhoneXR, .iPhone11:
+            return 326
+        case .iPhone6Plus, .iPhone7Plus, .iPhone8Plus:
+            return 401
+        case .iPhoneX, .iPhoneXS, .iPhone11Pro, .iPhoneXSMax, .iPhone11ProMax:
+            return 458
+        case .iPhone12mini, .iPhone13mini:
+            return 476
+        case .iPhone12, .iPhone13, .iPhone14, .iPhone12Pro, .iPhone13Pro:
+            return 460
+        case .iPhone12ProMax, .iPhone13ProMax, .iPhone14Plus:
+            return 458
+        case .iPhone14Pro, .iPhone15, .iPhone15Pro:
+            return 460
+        case .iPhone14ProMax, .iPhone15ProMax, .iPhone15Plus:
+            return 460
+        default:
+            break
+        }
+        return 0
+    }
+}
